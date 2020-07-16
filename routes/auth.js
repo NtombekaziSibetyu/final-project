@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -10,7 +11,15 @@ const Patients = require('../models/Patients');
 //route GET api/auth
 // login a patient
 // private access
-router.get('/', (req, res) => { res.send(req.body) });
+router.get('/', auth, async (req, res) => { 
+   try {
+       const patient = await Patients.findById(req.patient.id).select('-identityNo');
+       res.json(patient);
+   } catch (err) {
+       console.error(err.message);
+       res.status(500).send('Server error')
+   }    
+});
 
 //route PUT api/auth
 // edit the patients information
