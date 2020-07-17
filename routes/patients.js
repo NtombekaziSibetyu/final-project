@@ -67,7 +67,7 @@ async (req, res) => {
 )
 
 //@route PUT /api/patients/
-//update contact details
+//update patient details
 //@access private access
 router.put('/', auth, 
 async (req, res) => {
