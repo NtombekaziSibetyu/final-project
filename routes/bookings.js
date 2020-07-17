@@ -63,7 +63,7 @@ router.delete('/:id', auth,
 
         if(!booking) return res.status(404).json({ msg: 'Contact not found'});
 
-        // Make sure user owns contact
+        
         if(booking.patient.toString() !== req.patient.id) {
             return res.status(401).json({ msg: 'Not authorized'});
         }
