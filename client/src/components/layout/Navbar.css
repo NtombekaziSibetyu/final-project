@@ -1,0 +1,13 @@
+:root{
+    --dark-color: #333333;
+
+}
+
+.navbar{
+    margin:0;
+    background-color: var(--dark-color);
+    padding: 5px;
+}
+.badge{
+    
+}

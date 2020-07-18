@@ -1,18 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types'
-
+import React, {Link} from 'react';
+import PropTypes from 'prop-types';
+import './Navbar.css'
 
 function Navbar({ titles, icons }) {
     return (
-        <div>
+        <nav className='navbar '>
+            <a className='navbar-brand' href='#'>
+                <span className='badge'>Wellness clinic</span>
+            </a>
             
-        </div>
+        </nav>
     )
 }
 
 Navbar.propTypes = {
-    titles: PropTypes.array.isRequired,
-    icons: PropTypes.array.isRequired,
+    titles: PropTypes.object.isRequired,
+    icons: PropTypes.object.isRequired,
 }
 
-export default Navbar
+export default Navbar;
