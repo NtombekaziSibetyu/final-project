@@ -66,39 +66,6 @@ async (req, res) => {
     }
 )
 
-//@route PUT /api/patients/
-//update patient details
-//@access private access
-router.put('/', auth, 
-async (req, res) => {
-    const { name, email, phone, address} = req.body;
-
-    // Build patient object
-    const patientFields = {};
-
-    if(name) patientFields.name = name;
-    if(email) patientFields.email = email;
-    if(phone) patientFields.phone = phone;
-    if(address) patientFields.address = address;
-    try {
-        let patient = await Patients.findById(req.params);
-
-        if(!patient) return res.status(404).json({ msg: 'Patient not found'});
-
-        
-        if(patient.toString() !== req.patient) {
-            return res.status(401).json({ msg: 'Not authorized'});
-        }
-        contact = await Patients.findOneAndUpdate(req.params, 
-            {$set: patientFields},
-            { new: true});
-
-            res.json(patient);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
 
 
 module.exports = router;

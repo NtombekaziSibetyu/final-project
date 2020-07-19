@@ -1,21 +1,35 @@
 import React, {Link} from 'react';
-import PropTypes from 'prop-types';
-import './Navbar.css'
+import './Navbar.css';
 
-function Navbar({ titles, icons }) {
+const Navbar = () => {
+        
+    const responsive = () => {
+        const navigation = document.getElementById("myTopnav");
+        if (navigation.className === "topnav") {
+          navigation.className += " responsive";
+        } else {
+          navigation.className = "topnav";
+        }
+      }   
+
     return (
-        <nav className='navbar '>
-            <a className='navbar-brand' href='#'>
-                <span className='badge'>Wellness clinic</span>
-            </a>
+        <div className="topnav" id="myTopnav">
+           <a href="#default" class="logo">CompanyLogo</a>
+            <ul>
+                <li><Link to='/register'>Register</Link></li>
+                <li><Link to='/login'>Login</Link></li>
+                <li>
+                    <a href="javascript:void(0);" className="icon" onclick={responsive()}>
+                    <i className="fa fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
             
-        </nav>
+            
+        </div>
     )
 }
 
-Navbar.propTypes = {
-    titles: PropTypes.object.isRequired,
-    icons: PropTypes.object.isRequired,
-}
+
 
 export default Navbar;

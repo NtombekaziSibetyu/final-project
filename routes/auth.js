@@ -24,7 +24,37 @@ router.get('/', auth, async (req, res) => {
 //route PUT api/auth
 // edit the patients information
 // private access
-router.put('/:id', (req, res) => { res.send(req.body) });
+router.put('/:id', 
+async (req, res) => { 
+    const { name, email, phone, address} = req.body;
+
+    // Build patient object
+    const patientFields = {};
+
+    if(name) patientFields.name = name;
+    if(email) patientFields.email = email;
+    if(phone) patientFields.phone = phone;
+    if(address) patientFields.address = address;
+
+    try {
+        let patient = await Patients.findById(req.params);
+
+        if(!patient) return res.status(404).json({ msg: 'Patient not found'});
+
+        
+        if(patient.toString() !== req.patient) {
+            return res.status(401).json({ msg: 'Not authorized'});
+        }
+        contact = await Patients.findOneAndUpdate(req.params, 
+            {$set: patientFields},
+            { new: true});
+
+            res.json(patient); 
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error,');
+    }
+});
 
 
 //route POST api/auth
@@ -32,7 +62,7 @@ router.put('/:id', (req, res) => { res.send(req.body) });
 // public access
 router.post('/',
 [
-    check('name','Please enter aa valid full name').not().isEmpty(),
+    check('name','Please enter a valid full name').not().isEmpty(),
     check('identityNo','Please enter a valid identity number').exists()
 ], 
 async (req, res) => {
