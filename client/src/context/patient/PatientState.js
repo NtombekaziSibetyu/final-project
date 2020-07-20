@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer} from 'react';
 import axios from 'axios';
 import {
     REGISTER,
@@ -9,7 +9,7 @@ import {
 import PatientContext from './PatientContext';
 import PatientReducer from './PatientReducer'
 
-const PatientState = () => {
+const PatientState = props => {
 
     const initialState = {
         token: localStorage.getItem('token'),
@@ -73,4 +73,4 @@ const PatientState = () => {
     )
 }
 
-export default PatientState
+export default PatientState;
