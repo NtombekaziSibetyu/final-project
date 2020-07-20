@@ -2,6 +2,7 @@ import React from 'react';
 
 const Register = () => {
     return (
+        <div className='container'>
         <form>
             <h1>Register </h1>
             <div className='form-group'>
@@ -21,6 +22,7 @@ const Register = () => {
             </div>
             
         </form>
+        </div>
     )
 }
 
