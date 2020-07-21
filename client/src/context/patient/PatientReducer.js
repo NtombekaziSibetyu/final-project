@@ -16,7 +16,6 @@ export default (state, action) => {
                 ...action.payload,
                 authorised: true,
                 loading: false,
-                
                 }
         case REGISTER_ERROR:
         case LOGIN_ERROR:
@@ -25,6 +24,7 @@ export default (state, action) => {
                 ...action.payload,
                 authorised: false,
                 loading: false,
+                
             }
         case REMOVE_ERRORS:
             return {

@@ -8,11 +8,14 @@ export default ( state, action) => {
     switch( action.type) {
         case MAKE_APPOINTMENT:
             return{
-                
+               ...state,
+               booking: [action.payload, ...state.booking],
+            
             }
         case GET_APPOINTMENTS:
             return{
-
+                ...state,
+                booking: action.payload
             }
         case CANCEL_APPOINTMENT:
             return{

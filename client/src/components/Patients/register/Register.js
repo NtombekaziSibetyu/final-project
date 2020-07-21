@@ -1,6 +1,6 @@
-import React, { useContext, useEffect} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import PatientContext from '../../../context/patient/PatientContext'
-import { REMOVE_ERRORS } from '../../../context/types';
+
 
 const Register = props => {
 
@@ -10,34 +10,68 @@ const Register = props => {
 
     useEffect(() => {
         if(authorised){
-            props.history.push('/');
-            
+            props.history.push('/');   
         }
-        if(error){
-
+        if(error === 'The ID number you have entered is already registered/ belongs to someone else'){
+            alert('User cannot be registered');
             removeErrors();
         }
         // eslint-disable-next-line
     }, [ authorised, error, props.history]);
-    
+
+    const [patient, setPatient] = useState({
+        name: '',
+        identityNo: '',
+        email: '',
+        phone: '',
+        address: ''
+    })
+
+    const { name, identityNo, email, phone, address} = patient;
+
+    const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
+
+    const registerPatient = e => {
+        e.preventDefault();
+        if(name === '' || identityNo === '' || email === '' || phone || address === '') {
+
+        }
+        else {
+            register({
+                name,
+                identityNo,
+                email,
+                phone,
+                address
+            })
+        }
+    }
     return (
         <div className='container'>
-        <form >
+        <form onSubmit =  {registerPatient}>
             <h1>Register </h1>
             <div className='form-group'>
                 <label htmlFor='name'>Fullname</label>
-                <input type="text" placeholder='fullname'/>
+                <input type="text" name='name' value={name} onChange={handleChange} required placeholder='Fullname'/>
             </div>
             <div className='form-group'>
                 <label htmlFor='idno'>ID number</label>
-                <input type="text" placeholder='identity number' />
+                <input type="text" name='idno' value={identityNo} onChange={handleChange} required placeholder='identity number' />
             </div>
             <div className='form-group'>
                 <label htmlFor='email'>Email</label>
-                <input type='email' placeholder='email'/>
+                <input type='email' name='email' value={email} onChange={handleChange} required placeholder='Email'/>
+            </div>
+            <div className='form-group'>
+                <label htmlFor='phone'>Phone</label>
+                <input type="text" name='phone' value={phone} onChange={handleChange} required placeholder="Phone"/>
             </div>
             <div>
-                <button className='btn-block'>Register</button>
+                <label htmlFor="address">Physical Address</label>
+                <input type="text" name='address' value={address} onChange={handleChange} required/>
+            </div>
+            <div>
+                <button className='btn btn-block' type='submit'>Register</button>
             </div>
             
         </form>
