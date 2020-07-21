@@ -2,7 +2,8 @@ import {
     REGISTER,
     REGISTER_ERROR,
     LOGIN,
-    LOGN_ERROR
+    LOGIN_ERROR,
+    REMOVE_ERRORS
 } from '../types';
 
 export default (state, action) => {
@@ -13,9 +14,23 @@ export default (state, action) => {
             return{
                 ...state,
                 ...action.payload,
-                authorsed: true,
-                loading: false
+                authorised: true,
+                loading: false,
+                
                 }
+        case REGISTER_ERROR:
+        case LOGIN_ERROR:
+            return{
+                ...state,
+                ...action.payload,
+                authorised: false,
+                loading: false,
+            }
+        case REMOVE_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
        default:
            return state;
     }

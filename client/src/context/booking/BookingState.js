@@ -1,5 +1,6 @@
 import React, { useReducer} from 'react';
 import bookingReducer from './bookingReducer';
+import BookingContext from './BookingContext';
 import {
     MAKE_APPOINTMENT,
     GET_APPOINTMENTS,
@@ -29,9 +30,17 @@ const BookingState = props => {
 
     }
     return (
-        <div>
-            
-        </div>
+        <BookingContext.Provider
+        value = {{
+            booking: state.booking,
+            loading: state.loading,
+            error: state.error,
+            cancelAppointments,
+            makeAppointment,
+            getAppointments
+        }}>
+           {props.children} 
+        </BookingContext.Provider>
     )
 }
 

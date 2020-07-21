@@ -4,20 +4,22 @@ import {
     REGISTER,
     REGISTER_ERROR,
     LOGIN,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    REMOVE_ERRORS
 } from '../types';
 import PatientContext from './PatientContext';
 import PatientReducer from './PatientReducer'
 
 const PatientState = props => {
 
-    const initialState = {
+    const initialState = [{
         token: localStorage.getItem('token'),
         authorised: false,
         patient: null,
         loading: true,
         error: null
     }
+    ]
     const [ state, dispatch] = useReducer( PatientReducer, initialState);
 
     //regiister a patient
@@ -26,10 +28,10 @@ const PatientState = props => {
             headers: { 'Content-Type': 'application/json' }
         }
         try {
-            const response = axios.post('/api/patients',formData, config);
+            const res = axios.post('/api/patients',formData, config);
             dispatch({
                 type:REGISTER,
-                payload: response.data
+                payload: res.data
             })
         } catch (err) {
             dispatch({
@@ -57,18 +59,23 @@ const PatientState = props => {
             })
         }
     }
+    //REMOVING THE ERRORS
+    const removeErrors = () => dispatch({ type: REMOVE_ERRORS});
 
     return (
-        <PatientContext.Provider>
-           value = {{
-               token: state.token,
-               authorised: state.authorised,
-               loading: state.loading,
-               user: state.user,
-               error: state.error,
-               register,
-               login
-           }} 
+        <PatientContext.Provider
+        value = {{
+            token: state.token,
+            authorised: state.authorised,
+            loading: state.loading,
+            user: state.user,
+            error: state.error,
+            register,
+            login,
+            removeErrors
+        }}
+        >   
+            {props.children}
         </PatientContext.Provider>
     )
 }

@@ -1,7 +1,7 @@
 import {
     MAKE_APPOINTMENT,
     GET_APPOINTMENTS,
-    CANCEL_APPOINTENTS
+    CANCEL_APPOINTMENT
 } from '../types';
 
 export default ( state, action) => {
@@ -14,9 +14,11 @@ export default ( state, action) => {
             return{
 
             }
-        case CANCEL_APPOINTENTS:
+        case CANCEL_APPOINTMENT:
             return{
                 
             }
+        default:
+            return state;
     }
 }

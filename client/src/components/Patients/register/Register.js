@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect} from 'react';
+import PatientContext from '../../../context/patient/PatientContext'
+import { REMOVE_ERRORS } from '../../../context/types';
 
-const Register = () => {
+const Register = props => {
+
+    const patientContext = useContext( PatientContext );
+
+    const { authorised, register, error, removeErrors} = PatientContext;
+
+    useEffect(() => {
+        if(authorised){
+            props.history.push('/');
+            
+        }
+        if(error){
+
+            removeErrors();
+        }
+        // eslint-disable-next-line
+    }, [ authorised, error, props.history]);
+    
     return (
         <div className='container'>
-        <form>
+        <form >
             <h1>Register </h1>
             <div className='form-group'>
                 <label htmlFor='name'>Fullname</label>

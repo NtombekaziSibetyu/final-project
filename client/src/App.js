@@ -1,14 +1,18 @@
 import React, { Switch } from 'react';
-import { Route } from 'react-router-dom'
+import { Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './components/layout/Home';
 import Register from './components/Patients/register/Register';
+import PatientState from './context/patient/PatientState';
+import BookingState from './context/booking/BookingState'
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
+    <PatientState>
+      <BookingState>
+      <div className="App">
       <Navbar/>
        <Switch>
           <Route exact path= '/home' component={Home} />
@@ -17,6 +21,9 @@ const App = () => {
        </Switch>
        <Footer/>
     </div>
+      </BookingState>
+    </PatientState>
+    
   )
 }
 

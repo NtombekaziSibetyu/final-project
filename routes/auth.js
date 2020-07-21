@@ -58,7 +58,7 @@ async (req, res) => {
 
 
 //route POST api/auth
-// auth patient and get token
+// authorise  patient and get token
 // public access
 router.post('/',
 [
