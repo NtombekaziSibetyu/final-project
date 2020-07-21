@@ -14,7 +14,7 @@ const Navbar = () => {
 
     return (
         <div className="topnav" id="myTopnav">
-           <a href="#default" class="logo">CompanyLogo</a>
+           <a href="#default" className="logo">Clinic</a>
             <ul>
                 <li><Link to='/register'>Register</Link></li>
                 <li><Link to='/login'>Login</Link></li>

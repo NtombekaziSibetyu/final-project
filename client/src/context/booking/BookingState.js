@@ -5,7 +5,7 @@ import BookingContext from './BookingContext';
 import {
     MAKE_APPOINTMENT,
     GET_APPOINTMENTS,
-    CANCEL_APPOINTENTS,
+    CANCEL_APPOINTMENT,
     BOOKING_ERROR,
     REMOVE_ERRORS
 } from '../types';
@@ -23,7 +23,7 @@ const BookingState = props => {
     const getAppointments = async booking =>{
 
         try {
-           const res = await axios.get('/api/booking', patient) 
+           const res = await axios.get('/api/booking', booking) 
             dispatch({ type: GET_APPOINTMENTS, payload: res.data})
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg})
@@ -46,20 +46,20 @@ const BookingState = props => {
     const cancelAppointments = async id => {
         try {
             await axios.delete(`/api/booking/${id}`)
-            dispatch({ type: CANCEL_APPOINTENTS, payload: id})
+            dispatch({ type: CANCEL_APPOINTMENT, payload: id})
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg})
         }
     }
     return (
         <BookingContext.Provider
-        value = {{
-            booking: state.booking,
-            error: state.error,
-            cancelAppointments,
-            makeAppointment,
-            getAppointments
-        }}>
+            value = {{
+                booking: state.booking,
+                error: state.error,
+                cancelAppointments,
+                makeAppointment,
+                getAppointments
+            }}>
            {props.children} 
         </BookingContext.Provider>
     )
