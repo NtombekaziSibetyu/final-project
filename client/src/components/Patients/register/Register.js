@@ -55,8 +55,8 @@ const Register = props => {
                 <input type="text" name='name' value={name} onChange={handleChange} required placeholder='Fullname'/>
             </div>
             <div className='form-group'>
-                <label htmlFor='idno'>ID number</label>
-                <input type="text" name='idno' value={identityNo} onChange={handleChange} required placeholder='identity number' />
+                <label htmlFor='idnumber'>ID number</label>
+                <input type="text" name='idnumber' value={identityNo} onChange={handleChange} required placeholder='identity number' />
             </div>
             <div className='form-group'>
                 <label htmlFor='email'>Email</label>

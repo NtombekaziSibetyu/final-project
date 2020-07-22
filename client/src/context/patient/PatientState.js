@@ -32,6 +32,18 @@ const PatientState = props => {
             delete axios.defaults.headers.common['x-auth-token'];
         }
     }
+    //show the patients info
+    const showPatient = async () => {
+        if(localStorage.token){
+            setToken(localStorage.token);
+        }
+        try {
+            const res = await axios.get('/api/bookings')
+            dispatch({type: GET_PATIENT, payload: res.data})
+        } catch (error) {
+            dispatch({ type: ERROR })
+        }
+    }
 
     //regiter a patient
     const register = async formData =>{
@@ -44,7 +56,7 @@ const PatientState = props => {
                 type:REGISTER,
                 payload: res.data
             });
-            showPatient()
+            showPatient();
         } catch (err) {
             dispatch({
                 type: REGISTER_ERROR,
@@ -63,7 +75,7 @@ const PatientState = props => {
                 type: LOGIN,
                 payload: res.data
             });
-            showPatient()
+            showPatient();
         } catch (err) {
             dispatch({
                 type: LOGIN_ERROR,
@@ -72,18 +84,7 @@ const PatientState = props => {
         }
     }
 
-    //show the patients info
-    const showPatient = async () => {
-        if(localStorage.token){
-            setToken(localStorage.token);
-        }
-        try {
-            const res = await axios.get('/api/bookings')
-            dispatch({type: GET_PATIENT, payload: res.data})
-        } catch (error) {
-            dispatch({ type: ERROR })
-        }
-    }
+    
 
     //REMOVING THE ERRORS
     const removeErrors = () => dispatch({ type: REMOVE_ERRORS});

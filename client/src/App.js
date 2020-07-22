@@ -1,7 +1,6 @@
-import React, { Switch } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, {Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
 import Home from './components/layout/Home';
 import Register from './components/Patients/register/Register';
 import Login from './components/Patients/login/Login'
@@ -14,11 +13,16 @@ const App = () => {
     <PatientState>
       <BookingState>
         <Router>
+        <Fragment>
+        <Navbar/>
         <div className='App center'>
-          <Navbar/>
-          HELLO
-          <Footer/>
+          <Switch>
+              <Route exact path='/home' component={Home}/>
+              <Route exact path='/login' component={Login}/>
+              <Route exact path='/register' component={Register}/>
+          </Switch>
         </div> 
+        </Fragment>
         </Router>
       </BookingState>
     </PatientState>
@@ -26,4 +30,4 @@ const App = () => {
   )
 }
 
- export default App;
+export default App;

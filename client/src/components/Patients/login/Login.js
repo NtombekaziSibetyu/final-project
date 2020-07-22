@@ -1,11 +1,12 @@
 import React, { useEffect, useContext, useState} from 'react';
 import PatientContext from '../../../context/patient/PatientContext';
+import Register from '../register/Register'
 import PatientState from '../../../context/patient/PatientState';
 
 const Login = props => {
     const patientContext = useContext( PatientContext );
 
-    const { authorised, login, error, removeErrors} = PatientContext;
+    const { authorised, login, error, removeErrors} = patientContext;
 
     useEffect(() => {
         if(authorised){
@@ -33,16 +34,19 @@ const Login = props => {
             alert('Please fill in both fullname and password')
         }
         else {
-            login(
+            login({
                 name,
                 identityNo
-            )
+            });
         }
     }
-    
 
     return (
         <div className='container'>
+            <div>
+                <h4>Not registered?</h4>
+                <a href="/register">Register here</a>
+            </div>
             <form onSubmit={loginPatient}>
                 <h3>Login</h3>
                 <div className='form-group'>

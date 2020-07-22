@@ -1,4 +1,5 @@
-import React, {useEffect, Link} from 'react';
+import React, {useEffec} from 'react';
+import {Link} from 'react-router-dom'
 import './Navbar.css';
 
 const Navbar = () => {
@@ -13,10 +14,10 @@ const Navbar = () => {
 
     return (
       <div className="topnav" id="myTopnav" >
-        <a href="#home" className="active">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <Link to='/home' className="active">Home</Link>
+        <Link to='/about'>About</Link>
+        <Link to='/contact'>Contact</Link>
+        <Link to='/login'>Book Online</Link>
         <a href="!#" className="icon" >
         <i class="fa fa-bars" onClick={navigator}></i>
       </a>

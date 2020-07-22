@@ -13,7 +13,7 @@ const Patients = require('../models/Patients');
 // private access
 router.get('/', auth, async (req, res) => { 
    try {
-       const patient = await Patients.findById(req.patient.id).select('-identityNo');
+       const patient = await Patients.findById(req.patient.id);
        res.json(patient);
    } catch (err) {
        console.error(err.message);

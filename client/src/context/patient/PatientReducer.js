@@ -2,12 +2,19 @@ import {
     REGISTER,
     REGISTER_ERROR,
     LOGIN,
+    GET_PATIENT,
     LOGIN_ERROR,
     REMOVE_ERRORS
 } from '../types';
 
 export default (state, action) => {
     switch( action.type) {
+        case GET_PATIENT:
+            return {
+                ...state,
+                authorised:true,
+                patient: action.payload
+            }
         case REGISTER:
         case LOGIN:
         localStorage.setItem('token', action.payload.token);   
@@ -15,7 +22,6 @@ export default (state, action) => {
                 ...state,
                 ...action.payload,
                 authorised: true,
-                loading: false,
                 }
         case REGISTER_ERROR:
         case LOGIN_ERROR:
@@ -23,8 +29,7 @@ export default (state, action) => {
                 ...state,
                 ...action.payload,
                 authorised: false,
-                loading: false,
-                
+                patient:null 
             }
         case REMOVE_ERRORS:
             return {
