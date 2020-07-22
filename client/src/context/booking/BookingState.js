@@ -9,7 +9,7 @@ import {
     BOOKING_ERROR,
     REMOVE_ERRORS
 } from '../types';
-import { response } from 'express';
+
 
 const BookingState = props => {
     const initialState = {
@@ -51,6 +51,8 @@ const BookingState = props => {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg})
         }
     }
+
+    
     return (
         <BookingContext.Provider
             value = {{

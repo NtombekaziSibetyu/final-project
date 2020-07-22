@@ -19,7 +19,7 @@ export default ( state, action) => {
             }
         case CANCEL_APPOINTMENT:
             return{
-                
+              ...state  
             }
         default:
             return state;

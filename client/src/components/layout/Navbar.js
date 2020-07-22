@@ -1,32 +1,27 @@
-import React, {Link} from 'react';
+import React, {useEffect, Link} from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
-        
-    const responsive = () => {
-        const navigation = document.getElementById("myTopnav");
-        if (navigation.className === "topnav") {
-          navigation.className += " responsive";
+    const navigator = () => {
+      const x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
         } else {
-          navigation.className = "topnav";
-        }
-      }   
+        x.className = "topnav";
+      }
+    }
 
     return (
-        <div className="topnav" id="myTopnav">
-           <a href="#default" className="logo">Clinic</a>
-            <ul>
-                <li><Link to='/register'>Register</Link></li>
-                <li><Link to='/login'>Login</Link></li>
-                <li>
-                    <a href="javascript:void(0);" className="icon" onclick={responsive()}>
-                    <i className="fa fa-bars"></i>
-                    </a>
-                </li>
-            </ul>
-            
-            
-        </div>
+      <div className="topnav" id="myTopnav" >
+        <a href="#home" className="active">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="!#" className="icon" >
+        <i class="fa fa-bars" onClick={navigator}></i>
+      </a>
+      </div>
+    
     )
 }
 

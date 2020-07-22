@@ -1,5 +1,5 @@
 import React, { Switch } from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './components/layout/Home';
@@ -13,19 +13,17 @@ const App = () => {
   return (
     <PatientState>
       <BookingState>
-      <div className="App">
-      <Navbar/>
-       <Switch>
-          
-          <Route exact path= '/register' component={Register} />
-          <Route exact path = '/login' component = {Login}/>
-       </Switch>
-       <Footer/>
-      </div>
+        <Router>
+        <div className='App center'>
+          <Navbar/>
+          HELLO
+          <Footer/>
+        </div> 
+        </Router>
       </BookingState>
     </PatientState>
       
   )
 }
 
-export default App;
+ export default App;
