@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import BookingContext from '../../context/booking/BookingContext';
 
 const BookingForm = () => {
@@ -7,34 +7,42 @@ const BookingForm = () => {
 
     useEffect(() => {
         setBooking({
-            type:'check-up',
+            type:'',
             date: ''
         })
     }, [])
 
-    const [booking, setBooking] = useState({
-        type: 'check-up',
+    const [bookings, setBooking] = useState({
+        type: '',
         date: ''
     });
 
-    const { type, date} = booking;
+    const { type, date} = bookings;
 
-    const handleChange = e => setBooking({...booking, [e.target.name]: e.target.value});
+    const handleChange = e => setBooking({...bookings, [e.target.name]: e.target.value});
 
     const addBooking = e => {
         e.preventDefault();
-        makeAppointment();
+        makeAppointment({
+            type,
+            date
+        });
     }
     return (
         <form onSubmit = {addBooking}>
             <h3>Book an appointment</h3>
             <div className='form-group'>
                 <label htmlFor="type">Type</label>
-                <input type="range" name="" id="" value={type} onChange={handleChange}/>
+                <select name="type" id="type">
+                    <option value={'Dentist'}>Dentist</option>
+                    <option value={'General'}>General Check-up</option>
+                    <option value={'Optometry - Eye Test'}>Optometrist</option>
+                    <option value={"Pediatrician"}>Pediatrician</option>
+                </select>
             </div>
             <div className='form-group'>
                 <label htmlFor="date">Date and Time</label>
-                <input type="datetime" name="" id="" value={date} onChange={handleChange}/>
+                <input type="datetime" name="date" id="date" value={date} onChange={handleChange}/>
             </div>
             <div className='form-btn'>
                 <button type="submit" className='btn btn-block'>Book Appointment</button>

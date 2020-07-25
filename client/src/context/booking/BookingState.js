@@ -13,20 +13,20 @@ import {
 
 const BookingState = props => {
     const initialState = {
-        booking: null,
+        bookings: [],
+        appointments: [],
         error: false
     }
 
     const [ state, dispatch ] = useReducer( bookingReducer, initialState)
 
     //show appointments
-    const getAppointments = async booking =>{
-
+    const getAppointments = async () =>{
         try {
-           const res = await axios.get('/api/booking', booking) 
+           const res = await axios.get('/api/booking') 
             dispatch({ type: GET_APPOINTMENTS, payload: res.data})
         } catch (err) {
-            dispatch({ type: BOOKING_ERROR, payload: err.response.msg})
+            dispatch({ type: BOOKING_ERROR, payload: err.response.msg })
         }
     }
 
@@ -56,7 +56,8 @@ const BookingState = props => {
     return (
         <BookingContext.Provider
             value = {{
-                booking: state.booking,
+                bookings: state.bookings,
+                appointments: state.appointments,
                 error: state.error,
                 cancelAppointments,
                 makeAppointment,

@@ -6,7 +6,7 @@ import PatientState from '../../../context/patient/PatientState';
 const Login = props => {
     const patientContext = useContext( PatientContext );
 
-    const { authorised, login, error, removeErrors} = patientContext;
+    const { authorised, logIn, error, removeErrors} = patientContext;
 
     useEffect(() => {
         if(authorised){
@@ -34,7 +34,7 @@ const Login = props => {
             alert('Please fill in both fullname and password')
         }
         else {
-            login({
+            logIn({
                 name,
                 identityNo
             });

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth')
 const { check, validationResult } = require('express-validator/check')
-const Patients = require('../models/Patients');
 const Booking = require('../models/Booking')
 
 //route GET api/bookings
@@ -11,7 +10,7 @@ const Booking = require('../models/Booking')
 router.get('/', auth, 
 async (req, res) => { 
     try {
-        const booking = await Booking.find({ patient: req.patient.id}).sort({ date:-1 });
+        const booking = await Booking.find({ patient: req.patient.id});
         res.json(booking);
     } catch (err) {
         console.error(err.message);
@@ -41,7 +40,7 @@ async (req, res) => {
             patient: req.patient.id
         })
 
-        const booking = await newBooking.save();
+        const booking = await new Booking.save();
 
         res.json(booking);
 
@@ -64,7 +63,7 @@ router.delete('/:id', auth,
         if(!booking) return res.status(404).json({ msg: 'Contact not found'});
 
         
-        if(booking.patient.toString() !== req.patient.id) {
+        if(booking.patient !== req.patient.id) {
             return res.status(401).json({ msg: 'Not authorized'});
         }
 

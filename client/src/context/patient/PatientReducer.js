@@ -4,7 +4,8 @@ import {
     LOGIN,
     GET_PATIENT,
     LOGIN_ERROR,
-    REMOVE_ERRORS
+    REMOVE_ERRORS,
+    LOGOUT
 } from '../types';
 
 export default (state, action) => {
@@ -17,7 +18,7 @@ export default (state, action) => {
             }
         case REGISTER:
         case LOGIN:
-        localStorage.setItem('token', action.payload.token);   
+        localStorage.setItem('token', action.payload);   
             return{
                 ...state,
                 ...action.payload,
@@ -35,6 +36,14 @@ export default (state, action) => {
             return {
                 ...state,
                 error: null
+            }
+        case LOGOUT:
+            localStorage.removeItem('token');
+            return {
+                ...state,
+                token: null,
+                authorised: false,
+                patient: null
             }
        default:
            return state;

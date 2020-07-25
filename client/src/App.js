@@ -6,6 +6,7 @@ import Register from './components/Patients/register/Register';
 import Login from './components/Patients/login/Login'
 import PatientState from './context/patient/PatientState';
 import BookingState from './context/booking/BookingState';
+import PatientItem from './components/Patients/PatientItem'
 import './App.css';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
               <Route exact path='/home' component={Home}/>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/register' component={Register}/>
+              <Route exact path='/' component={PatientItem}/>
           </Switch>
         </div> 
         </Fragment>

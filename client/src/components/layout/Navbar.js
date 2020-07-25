@@ -11,13 +11,19 @@ const Navbar = () => {
         x.className = "topnav";
       }
     }
+    const activate = () => {
+      const z = document.getElementById('myTopnav');
+      if(z.className === 'p'){
+        z.className += '-active';
+      }
+    }
 
     return (
       <div className="topnav" id="myTopnav" >
-        <Link to='/home' className="active">Home</Link>
-        <Link to='/about'>About</Link>
-        <Link to='/contact'>Contact</Link>
-        <Link to='/login'>Book Online</Link>
+        <Link to='/home' className='p'>Home</Link>
+        <Link to='/about' className="nav-link">About</Link>
+        <Link to='/contact'  />
+        <Link to='/login'>Login</Link>
         <a href="!#" className="icon" >
         <i class="fa fa-bars" onClick={navigator}></i>
       </a>

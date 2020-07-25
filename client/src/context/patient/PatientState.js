@@ -1,4 +1,4 @@
-import React, { useReducer} from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import {
     REGISTER,
@@ -65,7 +65,7 @@ const PatientState = props => {
         }
     }
     //patient login
-    const login = async formData => {
+    const logIn = async formData => {
         const config = { headers: { 'Content-Type': 'application/json' }}
         
         try {
@@ -90,7 +90,7 @@ const PatientState = props => {
     const removeErrors = () => dispatch({ type: REMOVE_ERRORS});
 
     //patient logout
-    const logout = () => dispatch({ type: LOGOUT})
+    const logout = () => dispatch({ type: LOGOUT })
 
     return (
         <PatientContext.Provider
@@ -103,7 +103,7 @@ const PatientState = props => {
             setToken,
             register,
             showPatient,
-            login,
+            logIn,
             logout,
             removeErrors
         }}

@@ -9,17 +9,18 @@ export default ( state, action) => {
         case MAKE_APPOINTMENT:
             return{
                ...state,
-               booking: [action.payload, ...state.booking],
-            
+               bookings: [action.payload, ...state.bookings],
             }
         case GET_APPOINTMENTS:
             return{
                 ...state,
-                booking: action.payload
+                bookings: action.payload
             }
         case CANCEL_APPOINTMENT:
             return{
-              ...state  
+                ...state,
+                bookings: state.bookings.filter(
+                    booking => booking._id !== action.payload),  
             }
         default:
             return state;

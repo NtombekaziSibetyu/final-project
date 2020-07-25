@@ -6,7 +6,7 @@ const Register = props => {
 
     const patientContext = useContext( PatientContext );
 
-    const { authorised, register, error, removeErrors} = PatientContext;
+    const { authorised, register, error, removeErrors} =patientContext;
 
     useEffect(() => {
         if(authorised){
@@ -33,10 +33,6 @@ const Register = props => {
 
     const registerPatient = e => {
         e.preventDefault();
-        if(name === '' || identityNo === '' || email === '' || phone || address === '') {
-
-        }
-        else {
             register({
                 name,
                 identityNo,
@@ -45,7 +41,6 @@ const Register = props => {
                 address
             })
         }
-    }
     return (
         <div className='container'>
         <form onSubmit =  {registerPatient}>
@@ -55,9 +50,9 @@ const Register = props => {
                 <input type="text" name='name' value={name} onChange={handleChange} required placeholder='Fullname'/>
             </div>
             <div className='form-group'>
-                <label htmlFor='idnumber'>ID number</label>
-                <input type="text" name='idnumber' value={identityNo} onChange={handleChange} required placeholder='identity number' />
-            </div>
+                    <label htmlFor='identityNo'>ID Number</label>
+                    <input type='text' name='identityNo' value={identityNo} onChange={handleChange} required placeholder='enter ID number'/>
+                </div>
             <div className='form-group'>
                 <label htmlFor='email'>Email</label>
                 <input type='email' name='email' value={email} onChange={handleChange} required placeholder='Email'/>
