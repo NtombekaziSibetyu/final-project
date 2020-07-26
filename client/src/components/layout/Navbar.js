@@ -20,8 +20,8 @@ const Navbar = () => {
 
     return (
       <div className="topnav" id="myTopnav" >
-        <Link to='/home' className='p'>Home</Link>
-        <Link to='/about' className="nav-link">About</Link>
+        <Link to='/' >Home</Link>
+        <Link to='/about' >About</Link>
         <Link to='/contact'  />
         <Link to='/login'>Login</Link>
         <a href="!#" className="icon" >

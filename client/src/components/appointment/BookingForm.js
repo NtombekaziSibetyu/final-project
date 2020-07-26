@@ -3,7 +3,7 @@ import BookingContext from '../../context/booking/BookingContext';
 
 const BookingForm = () => {
     const bookingContext = useContext(BookingContext);
-    const { booking, error, makeAppointment } = bookingContext;
+    const {  makeAppointment } = bookingContext;
 
     useEffect(() => {
         setBooking({

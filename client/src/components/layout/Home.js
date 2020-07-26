@@ -16,9 +16,9 @@ const Home = () => {
                 <p>Friday : 08h00 - 18h00</p>
                 <p>Saturday  and Sunday : 09h00 -16h00</p>
             </div>
-            <div>
+            <div >
                 <h4><i className='fas fa-map-marker' />  Address </h4>
-                <p>238 Dassty Road</p>
+                <p>238 Dassuty Road</p>
                 <p>Cape Town</p>
                 <p>Western Cape</p>
             </div>

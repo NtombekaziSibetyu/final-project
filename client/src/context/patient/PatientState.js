@@ -37,7 +37,9 @@ const PatientState = props => {
         if(localStorage.token){
             setToken(localStorage.token);
         }
+        
         try {
+
             const res = await axios.get('/api/bookings')
             dispatch({type: GET_PATIENT, payload: res.data})
         } catch (error) {

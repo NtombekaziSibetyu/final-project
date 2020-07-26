@@ -74,7 +74,7 @@ async (req, res) => {
     const {name, identityNo } = req.body;
 
     try {
-        let patient = await Patients.findOne({ name });
+        let patient = await Patients.findOne({ name, identityNo });
 
         if(!patient){
             return res.status(400).json({msg:'invalid credentials'});
