@@ -1,5 +1,5 @@
-import React, {useEffec} from 'react';
-import {Link} from 'react-router-dom'
+import React  from 'react';
+import { Link } from 'react-router-dom'
 import './Navbar.css';
 
 const Navbar = () => {
@@ -11,27 +11,19 @@ const Navbar = () => {
         x.className = "topnav";
       }
     }
-    const activate = () => {
-      const z = document.getElementById('myTopnav');
-      if(z.className === 'p'){
-        z.className += '-active';
-      }
-    }
-
+    
     return (
       <div className="topnav" id="myTopnav" >
-        <Link to='/' >Home</Link>
+        <Link to='/home' >Home</Link>
         <Link to='/about' >About</Link>
-        <Link to='/contact'  />
         <Link to='/login'>Login</Link>
-        <a href="!#" className="icon" >
+        <a href="/" className="icon" >
         <i class="fa fa-bars" onClick={navigator}></i>
       </a>
       </div>
     
     )
 }
-
 
 
 export default Navbar;

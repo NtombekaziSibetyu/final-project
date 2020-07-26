@@ -14,7 +14,7 @@ const PatientItem = () => {
     const logOut = () => {
         logout();
     }
-    
+
     return (
         <div className='container'>
             <ul>

@@ -58,7 +58,7 @@ const Login = props => {
                     <input type='text' name='identityNo' value={identityNo} onChange={handleChange} required placeholder='enter ID number'/>
                 </div>
                 <div className='form-group'>
-                    <button className='btn btn-block' type='submit'>Login</button>
+                    <button className='btn btn-block' type='submit' value="Login" >Login</button>
                 </div>
             </form>
         </div>
