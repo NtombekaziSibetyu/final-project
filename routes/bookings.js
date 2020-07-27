@@ -6,7 +6,7 @@ const Booking = require('../models/Booking')
 
 //route GET api/bookings
 // get the patients bookings
-router.get('/',[ auth,
+router.get('/', auth,
 async (req, res) => { 
     try {
         const booking = await Booking.find({ patient: req.patient});
@@ -15,7 +15,7 @@ async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server error');
     }
-}]);
+});
 
 //route POST api/bookings
 // add the patients bookings

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator/check')
-const Patients = require('../models/Patients');
+const Patient = require('../models/Patients');
 
 //@route POST api/patients
 // register a patient
@@ -25,13 +25,13 @@ async (req, res) => {
         const { name, identityNo, email, phone, address} = req.body;
 
         try {
-            let patient = await Patients.findOne({ identityNo })
+            let patient = await Patient.findOne({ identityNo })
 
             if(patient) {
                 return res.status(400).json({ msg: 'The ID number you have entered is already registered/ belongs to someone else'})
             }
 
-            patient = new Patients({
+            patient = new Patient({
                 name,
                 identityNo,
                 email,
@@ -56,7 +56,7 @@ async (req, res) => {
             }, 
             (err, token) => {
                 if(err) throw err;
-                res.json({token})
+                res.json({ token })
             })
 
         } catch (err) {

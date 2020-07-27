@@ -5,8 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator/check')
-const Patients = require('../models/Patients');
-
+const Patient = require('../models/Patients');
 
 //route GET api/auth login a patient
 
@@ -14,7 +13,7 @@ router.get('/', auth,
 async (req, res) => { 
 
    try {
-       const patient = await Patients.findById(req.patient.id).select('-identityNo');
+       const patient = await Patient.findById(req.patient.id).select('-identityNo');
        res.json(patient);
    } catch (err) {
        console.error(err.message);
@@ -24,21 +23,21 @@ async (req, res) => {
 
 //route POST api/auth
 // authorise  patient and get token
-router.post('/',[auth,
+router.post('/',
 [
     check('name','Please enter a valid full name'),
     check('identityNo','Please enter a valid identity number').exists()
-]], 
+], 
 async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array()})
         }
 
-    const {name, identityNo } = req.body;
+    const { name, identityNo } = req.body;
 
     try {
-        let patient = await Patients.findOne({ name });
+        let patient = await Patient.findOne({ name });
 
         if(!patient){
             return res.status(400).json({msg:'invalid credentials'});
@@ -60,7 +59,7 @@ async (req, res) => {
         }, 
         (err, token) => {
             if(err) throw err;
-            res.json({token})
+            res.json({ token })
         })
 
     } catch (err) {

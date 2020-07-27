@@ -6,19 +6,10 @@ const app = express();
 //connect the database
 connectDB();
 
-if(process.env.NODE_ENV === 'production'){
-    //set static folder
-    app.use(express.static('client/build'));
-
-    app.get('/', (req, res) => {
-        res.sendFile(path.resolve( '/client','/build', '/index.html'))
-    });
-}
-
-
 //initialize middleware
-app.use(express.static('client/build'));
-app.get('/', (req, res) => res.sendFile(path.resolve( '/client','/build', '/index.html')));
+app.use(express.json({ extended: false }));
+
+app.get('/', (req, res) => res.json({ msg: 'clinic API'}));
 
 //routes 
 app.use('/api/patients', require('./routes/patients'));
