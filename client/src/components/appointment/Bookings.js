@@ -17,10 +17,10 @@ const Bookings = ({booking}) => {
 
     return (
         <div className='card'>
-           <h3 className="text-primary text-left">
+           <h3 className="text text-left">
                Appointment Type : {type}
            </h3>
-           <h3>
+           <h3 className="text text-left" >
                Date and Time : { date }
            </h3>
            <p>

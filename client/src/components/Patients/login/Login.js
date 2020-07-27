@@ -9,7 +9,7 @@ const Login = props => {
 
     useEffect(() => {
         if(authorised){
-            props.history.push('/patient');
+            props.history.push('/');
         }
         if(error === 'invalid credentials') {
             alert('User cannot be registered');

@@ -33,15 +33,17 @@ const BookingForm = () => {
             <h3>Book an appointment</h3>
             <div className='form-group'>
                 <label htmlFor="type">Type</label>
+                <input id='type'>
                 <select name="type" id="type">
                     <option value={'Dentist'}>Dentist</option>
                     <option value={'General'}>General Check-up</option>
                     <option value={'Optometry - Eye Test'}>Optometrist</option>
-                    <option value={"Pediatrician"}>Pediatrician</option>
                 </select>
+                </input>
+                
             </div>
             <div className='form-group'>
-                <label htmlFor="date">Date and Time</label>
+                <label htmlFor="date">Appointment Date</label>
                 <input type="datetime" name="date" id="date" value={date} onChange={handleChange}/>
             </div>
             <div className='form-btn'>

@@ -8,12 +8,11 @@ const { check, validationResult } = require('express-validator/check')
 const Patients = require('../models/Patients');
 
 
-//route GET api/auth
-// login a patient
-// private access
+//route GET api/auth login a patient
+
 router.get('/', auth, async (req, res) => { 
    try {
-       const patient = await Patients.findById(req.patient.id);
+       const patient = await Patients.findById(req.patient.id).select('-identityNo');
        res.json(patient);
    } catch (err) {
        console.error(err.message);
@@ -21,9 +20,8 @@ router.get('/', auth, async (req, res) => {
    }    
 });
 
-//route PUT api/auth
-// edit the patients information
-// private access
+//route PUT api/auth edit the patients information
+
 router.put('/:id', 
 async (req, res) => { 
     const { name, email, phone, address} = req.body;
@@ -62,7 +60,7 @@ async (req, res) => {
 // public access
 router.post('/',
 [
-    check('name','Please enter a valid full name').not().isEmpty(),
+    check('name','Please enter a valid full name'),
     check('identityNo','Please enter a valid identity number').exists()
 ], 
 async (req, res) => {
@@ -74,7 +72,7 @@ async (req, res) => {
     const {name, identityNo } = req.body;
 
     try {
-        let patient = await Patients.findOne({ name, identityNo });
+        let patient = await Patients.findOne({ name });
 
         if(!patient){
             return res.status(400).json({msg:'invalid credentials'});
