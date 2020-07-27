@@ -19,16 +19,13 @@ const Patient = () => {
     }
     return (
         <div className='container'>
-        <button className='btn' style={{float:'right'}} onClick={onClick}> Log out</button>
-            <h3>Welcome </h3>  
-           {bookings !== 0 ? 
-           (bookings.map( booking => (
-                   <Bookings booking={booking} />
-               ))) :
-               (<BookingForm/>)
-           } 
+            {/* This logout button shouldn't show if no one is logged */}
+        <button className='btn' style={{float:'right'}} onClick={onClick}> Log out</button> 
+           
+           { bookings.length !== 0 ? bookings.map(( booking => 
+                   <Bookings booking={booking} />)) : <BookingForm/> }
         </div>
     )
 }
 
-export default Patient
+export default Patient;

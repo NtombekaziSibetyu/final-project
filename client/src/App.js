@@ -1,4 +1,5 @@
-import React, {Fragment } from 'react';
+import React, { Fragment, useContext  } from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
@@ -10,6 +11,7 @@ import BookingState from './context/booking/BookingState';
 import './App.css';
 
 const App = () => {
+  
   return (
     <PatientState>
       <BookingState>
@@ -18,10 +20,10 @@ const App = () => {
         <Navbar/>
         <div className='App center'>
           <Switch>
-              <Route exact path='/home' component={Home}/>
-              <Route  path='/login' component={Login}/>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/login' component={Login}/>
               <Route exact path='/register' component={Register}/>
-              <Route exact path='/' component={Patient}/>
+              <Route exact path='/patient' component={Patient}/>
           </Switch>
         </div> 
         </Fragment>

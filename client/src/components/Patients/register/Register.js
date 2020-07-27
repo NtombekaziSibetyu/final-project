@@ -10,7 +10,7 @@ const Register = props => {
 
     useEffect(() => {
         if(authorised){
-            props.history.push('/');   
+            props.history.push('/patient');   
         }
         if(error === 'The ID number you have entered is already registered/ belongs to someone else'){
             alert('User cannot be registered');

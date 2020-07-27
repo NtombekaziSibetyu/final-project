@@ -16,8 +16,9 @@ const Bookings = ({booking}) => {
     }
 
     return (
-        <div className='card'>
-           <h3 className="text text-left">
+        <div className='container'>
+            <div className='card'>
+            <h3 className="text text-left">
                Appointment Type : {type}
            </h3>
            <h3 className="text text-left" >
@@ -26,6 +27,7 @@ const Bookings = ({booking}) => {
            <p>
                <button className='btn btn-block btn-dark' onClick={onClick}> Cancel </button>
            </p>
+            </div> 
         </div>
     )
 }

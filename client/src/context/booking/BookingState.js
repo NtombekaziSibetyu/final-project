@@ -23,7 +23,7 @@ const BookingState = props => {
     //show appointments
     const getAppointments = async () =>{
         try {
-           const res = await axios.get('/api/booking') 
+           const res = await axios.get('/api/bookings') 
             dispatch({ type: GET_APPOINTMENTS, payload: res.data})
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg })
@@ -36,7 +36,7 @@ const BookingState = props => {
             headers: {'Content-Type':'application/json'}
         }
         try {
-            const res = await axios.post('api/booking', booking, config)
+            const res = await axios.post('api/bookings', booking, config)
             dispatch({type: MAKE_APPOINTMENT, payload: res.data})
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg })
@@ -45,7 +45,7 @@ const BookingState = props => {
     //cancel appointment
     const cancelAppointments = async id => {
         try {
-            await axios.delete(`/api/booking/${id}`)
+            await axios.delete(`/api/bookings/${id}`)
             dispatch({ type: CANCEL_APPOINTMENT, payload: id})
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg})

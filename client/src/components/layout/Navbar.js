@@ -14,7 +14,7 @@ const Navbar = () => {
     
     return (
       <div className="topnav" id="myTopnav" >
-        <Link to='/home' >Home</Link>
+        <Link to='/' >Home</Link>
         <Link to='/about' >About</Link>
         <Link to='/login'>Login</Link>
         <a href="#" className="icon" >
