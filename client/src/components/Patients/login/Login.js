@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState} from 'react';
 import PatientContext from '../../../context/patient/PatientContext';
-import Register from '../register/Register'
 import PatientState from '../../../context/patient/PatientState';
 
 const Login = props => {
@@ -10,7 +9,7 @@ const Login = props => {
 
     useEffect(() => {
         if(authorised){
-            props.history.push('/');
+            props.history.push('/patient');
         }
         if(error === 'invalid credentials') {
             alert('User cannot be registered');
@@ -25,21 +24,15 @@ const Login = props => {
     })
 
     const { name, identityNo } = patient;
-
     const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
 
     const loginPatient = e => {
-        e.preventDefault();
-        if(name === '' || identityNo === ''){
-            alert('Please fill in both fullname and password')
+        e.preventDefault();        
+        logIn({
+            name,
+            identityNo
+            }); 
         }
-        else {
-            logIn({
-                name,
-                identityNo
-            });
-        }
-    }
 
     return (
         <div className='container'>
@@ -58,7 +51,7 @@ const Login = props => {
                     <input type='text' name='identityNo' value={identityNo} onChange={handleChange} required placeholder='enter ID number'/>
                 </div>
                 <div className='form-group'>
-                    <button className='btn btn-block' type='submit' value="Login" >Login</button>
+                    <button className='btn btn-block' type='submit'  >Login</button>
                 </div>
             </form>
         </div>

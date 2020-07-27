@@ -4,10 +4,9 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
 import Register from './components/Patients/register/Register';
 import Login from './components/Patients/login/Login';
-import Bookings from './components/appointment/Bookings'
+import Patient from './components/Patients/Patient'
 import PatientState from './context/patient/PatientState';
 import BookingState from './context/booking/BookingState';
-import PatientItem from './components/Patients/PatientItem'
 import './App.css';
 
 const App = () => {
@@ -20,10 +19,9 @@ const App = () => {
         <div className='App center'>
           <Switch>
               <Route exact path='/home' component={Home}/>
-              <Route exact path='/login' component={Login}/>
+              <Route  path='/login' component={Login}/>
               <Route exact path='/register' component={Register}/>
-              <Route exact path='/bookings' component={PatientItem}/>
-              <Route exact path='/booking' component={Bookings}/>
+              <Route exact path='/' component={Patient}/>
           </Switch>
         </div> 
         </Fragment>

@@ -17,7 +17,7 @@ const Navbar = () => {
         <Link to='/home' >Home</Link>
         <Link to='/about' >About</Link>
         <Link to='/login'>Login</Link>
-        <a href="/" className="icon" >
+        <a href="#" className="icon" >
         <i class="fa fa-bars" onClick={navigator}></i>
       </a>
       </div>
