@@ -21,8 +21,7 @@ async (req, res) => {
    }    
 });
 
-//route POST api/auth
-// authorise  patient and get token
+//route POST api/auth to authorise  patient and get token
 router.post('/',
 [
     check('name','Please enter a valid full name'),
@@ -30,6 +29,7 @@ router.post('/',
 ], 
 async (req, res) => {
     const errors = validationResult(req);
+    
     if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array()})
         }

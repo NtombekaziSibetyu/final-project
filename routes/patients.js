@@ -7,9 +7,8 @@ const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator/check')
 const Patient = require('../models/Patients');
 
-//@route POST api/patients
-// register a patient
-// public access
+//route method:POST api/patients to register a patient
+
 router.post('/', [
     check('name', 'name is required').not().isEmpty(),
     check('identityNo', 'ID number is required').isLength({min:13}),
@@ -26,11 +25,12 @@ async (req, res) => {
 
         try {
             let patient = await Patient.findOne({ identityNo })
-
+            //check if the patient already exist in the database
             if(patient) {
                 return res.status(400).json({ msg: 'The ID number you have entered is already registered/ belongs to someone else'})
             }
 
+            //create the patient
             patient = new Patient({
                 name,
                 identityNo,

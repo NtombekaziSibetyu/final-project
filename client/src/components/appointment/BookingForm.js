@@ -25,6 +25,7 @@ const BookingForm = () => {
         e.preventDefault();
         makeAppointment(bookings);
     }
+    
     return (
         <form onSubmit = {addBooking} className='form'>
             <h3>Book an appointment</h3>

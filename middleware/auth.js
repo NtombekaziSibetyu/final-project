@@ -10,9 +10,9 @@ module.exports = function(req, res, next) {
     }
 
     try {
-        const encrypt = jwt.verify(token, config.get('jwtSecret'));
+        const protected = jwt.verify(token, config.get('jwtSecret'));
 
-        req.patient = encrypt.patient;
+        req.patient = protected.patient;
         next();
 
     } catch (err) {

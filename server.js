@@ -6,10 +6,10 @@ const app = express();
 //connect the database
 connectDB();
 
-//initialize middleware
-app.use(express.json({ extended: false }));
-
-app.get('/', (req, res) => res.json({ msg: 'clinic API'}));
+//app.use(express.json({ extended: false }));
+//app.get('/', (req, res) => res.json({ msg: 'clinic API'}));
+app.use(express.json({ extended : false }))
+app.get('/',(req, res) => res.json({ msg: 'clinic API'}))
 
 //routes 
 app.use('/api/patients', require('./routes/patients'));
@@ -19,7 +19,7 @@ app.use('/api/bookings', require('./routes/bookings'));
 //port
 const PORT = process.env.PORT || 5000;
 
-//for deploy
+//for deployment
 if( process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
 }
