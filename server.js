@@ -19,6 +19,11 @@ app.use('/api/bookings', require('./routes/bookings'));
 //port
 const PORT = process.env.PORT || 5000;
 
+//for deploy
+if( process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'))
+}
+
 app.listen(PORT, () =>
 console.log(`server started on port ${PORT}`));
 

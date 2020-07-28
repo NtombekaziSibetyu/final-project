@@ -4,11 +4,11 @@ import './Navbar.css';
 
 const Navbar = () => {
     const navigator = () => {
-      const x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
+      const nav = document.getElementById("myTopnav");
+      if (nav.className === "topnav") {
+        nav.className += " responsive";
         } else {
-        x.className = "topnav";
+        nav.className = "topnav";
       }
     }
     

@@ -38,7 +38,7 @@ const Register = props => {
         }
     return (
         <div className='container'>
-        <form onSubmit ={registerPatient} >
+        <form onSubmit ={registerPatient} className='form' >
             <h1>Register </h1>
             <div className='form-group'>
                 <label htmlFor='name'>Fullname</label>

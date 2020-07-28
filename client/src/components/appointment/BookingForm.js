@@ -26,7 +26,7 @@ const BookingForm = () => {
         makeAppointment(bookings);
     }
     return (
-        <form onSubmit = {addBooking}>
+        <form onSubmit = {addBooking} className='form'>
             <h3>Book an appointment</h3>
             <div className='form-group'>
                 <label htmlFor="type">Type</label>

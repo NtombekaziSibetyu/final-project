@@ -40,7 +40,7 @@ const Login = props => {
                 <h4>Not registered?</h4>
                 <a href="/register">Register here</a>
             </div>
-            <form onSubmit={loginPatient}>
+            <form onSubmit={loginPatient} className='form'>
                 <h3>Login</h3>
                 <div className='form-group'>
                     <label htmlFor='name'>Fullname</label>

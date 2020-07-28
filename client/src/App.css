@@ -4,6 +4,40 @@
   border: thin #757575;
   box-shadow: #424242;
 }
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+.responsive.picture{
+  margin: 5px;
+  padding: 0 6px;
+  float: left;
+  border: 1px solid #ccc;
+  width: 24.99999%;
+}
+@media only screen and (max-width: 700px) {
+  .responsive.picture {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+.picture:hover{
+  border: 1px solid #777;
+}
+.pic-text{
+  text-align: center;
+}
+.input {
+  box-sizing: border-box;
+  width: 100%;
+}
 
 .footer {
   position: fixed;
