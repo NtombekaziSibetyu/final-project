@@ -16,7 +16,7 @@ app.use('/api/patients', require('./routes/patients'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/bookings', require('./routes/bookings'));
 
-//port
+//use port 
 const PORT = process.env.PORT || 5000;
 
 //for deployment

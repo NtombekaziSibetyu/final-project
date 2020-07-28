@@ -22,6 +22,10 @@
   border: 1px solid #ccc;
   width: 24.99999%;
 }
+.picture.img{
+  height: auto;
+  width: auto;
+}
 @media only screen and (max-width: 700px) {
   .responsive.picture {
     width: 49.99999%;
@@ -40,14 +44,20 @@
 }
 
 .footer {
-  position: fixed;
+  position: sticky ;
+  margin-bottom: 0;
   left: 0;
   bottom: 0;
+  padding: 0;
   width: 100%;
-  background-color:#0000;
-  color: white;
+  background-color:#000000;
+  color: #FFFFFF;
   text-align: center;
 }
-.footer .ul {
+.footer .ul.li {
   list-style: none;
+  float: left;
+}
+.footer .ul .li.i{
+  color: #FFFF;
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
-import About from './components/layout/Home';
+import About from './components/layout/About';
 import Register from './components/Patients/register/Register';
 import Login from './components/Patients/login/Login';
 import Patient from './components/Patients/Patient'
