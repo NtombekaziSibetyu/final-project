@@ -10,6 +10,7 @@ import {
     ERROR,
     LOGOUT
 } from '../types';
+import SettingToken from '../SettingToken';
 import PatientContext from './PatientContext';
 import PatientReducer from './PatientReducer'
 
@@ -24,17 +25,10 @@ const PatientState = props => {
     ]
     const [ state, dispatch] = useReducer( PatientReducer, initialState);
 
-    const setToken = token => {
-        if(token) {
-            axios.defaults.headers.common['x-auth-token'] = token;
-        }else{
-            delete axios.defaults.headers.common['x-auth-token'];
-        }
-    }
     //show the patients info
     const showPatient = async () => {
         if(localStorage.token){
-            setToken(localStorage.token);
+            SettingToken(localStorage.token);
         }
         
         try {
@@ -100,7 +94,7 @@ const PatientState = props => {
             loading: state.loading,
             user: state.user,
             error: state.error,
-            setToken,
+            SettingToken,
             register,
             showPatient,
             logIn,

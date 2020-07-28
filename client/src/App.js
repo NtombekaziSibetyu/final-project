@@ -3,13 +3,19 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/layout/Home';
+import About from './components/layout/Home';
 import Register from './components/Patients/register/Register';
 import Login from './components/Patients/login/Login';
 import Patient from './components/Patients/Patient'
 import PatientState from './context/patient/PatientState';
 import BookingState from './context/booking/BookingState';
+import SettingToken from './context/SettingToken'
 import './App.css';
+import Footer from './components/layout/Footer';
 
+if(localStorage.token) {
+  SettingToken(localStorage.token);
+}
 const App = () => {
   
   return (
@@ -21,11 +27,13 @@ const App = () => {
         <div className='App center'>
           <Switch>
               <Route exact path='/' component={Home}/>
+              <Route exact path='/about' component={About}/>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/register' component={Register}/>
-              <Route exact path='/patient' component={Patient}/>
+              <Route exact path='/bookings' component={Patient}/>
           </Switch>
         </div> 
+        <Footer/>
         </Fragment>
         </Router>
       </BookingState>

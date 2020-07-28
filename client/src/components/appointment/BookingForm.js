@@ -23,26 +23,23 @@ const BookingForm = () => {
 
     const addBooking = e => {
         e.preventDefault();
-        makeAppointment({
-            type,
-            date
-        });
+        makeAppointment(bookings);
     }
     return (
         <form onSubmit = {addBooking}>
             <h3>Book an appointment</h3>
             <div className='form-group'>
                 <label htmlFor="type">Type</label>
-                <select name="type" id="type">
-                    <option value={{ type: 'Dentist'}}>Dentist</option>
-                    <option value={{ type: 'General'}}>General Check-up</option>
-                    <option value={{type : 'Optometry - Eye Test'}}>Optometrist</option>
-                </select>
+                <input type="text" id="type" name="type" 
+                onChange={handleChange}
+                value={type} required/>
             </div>
             <div className='form-group'>
                 <label htmlFor="date">Appointment Date</label>
-                <input type="datetime-local" name="date" id="date" value={date} onChange={handleChange}/>
+                <input type="datetime" name="date" id="date" 
+                value={date} onChange={handleChange} required/>
             </div>
+            
             <div className='form-btn'>
                 <button type="submit" className='btn btn-block'>Book Appointment</button>
             </div>

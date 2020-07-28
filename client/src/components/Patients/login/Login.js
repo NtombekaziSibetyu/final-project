@@ -9,7 +9,7 @@ const Login = props => {
 
     useEffect(() => {
         if(authorised){
-            props.history.push('/patient');
+            props.history.push('/bookings');
         }
         if(error === 'invalid credentials') {
             alert('User cannot be registered');
@@ -27,13 +27,13 @@ const Login = props => {
     const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
 
     const loginPatient = e => {
-        e.preventDefault();        
-        logIn({
-            name,
-            identityNo
-            }); 
+        e.preventDefault(); 
+        if(name || identityNo === ''){
+            document.body.innerHTML = '<'
+        }       
+        logIn(patient); 
         }
-
+    
     return (
         <div className='container'>
             <div>
@@ -44,11 +44,14 @@ const Login = props => {
                 <h3>Login</h3>
                 <div className='form-group'>
                     <label htmlFor='name'>Fullname</label>
-                    <input type='text' name='name' value={name} onChange={handleChange} placeholder='fullname' required/>
+                    <input type='text' name='name' value={name} 
+                    onChange={handleChange} placeholder='fullname' required/>
                 </div>
                 <div className='form-group'>
                     <label htmlFor='identityNo'>Password</label>
-                    <input type='text' name='identityNo' value={identityNo} onChange={handleChange} required placeholder='enter ID number'/>
+                    <input type='number' name='identityNo' 
+                    value={identityNo} onChange={handleChange} 
+                     minLength='13' placeholder='enter ID number' required/>
                 </div>
                 <div className='form-group'>
                     <button className='btn btn-block' type='submit'  >Login</button>

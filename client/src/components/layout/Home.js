@@ -6,8 +6,10 @@ const Home = () => {
     return (
         <div>
             <h2>Wellness Clinic</h2>
+            <h4>Login to book an appointment</h4>
             <div className='slide-container'>
-                <img src="" alt=""/>
+                <img src="" alt="home" 
+                style={{width:'100%'}}/>
                 
             </div>
             <div>
@@ -17,7 +19,7 @@ const Home = () => {
                 <p>Saturday  and Sunday : 09h00 -16h00</p>
             </div>
             <div >
-                <h4><i className='fas fa-map' />  Address </h4>
+                <h4><i className='fas fa-map-marker' />  Address </h4>
                 <p>238 Dassuty Road</p>
                 <p>Cape Town</p>
                 <p>Western Cape</p>
