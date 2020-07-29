@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, Provider} from 'react';
 import axios from 'axios';
 import {
     REGISTER,
@@ -12,18 +12,18 @@ import {
 } from '../types';
 import SettingToken from '../SettingToken';
 import PatientContext from './PatientContext';
-import PatientReducer from './PatientReducer'
+import patientReducer from './patientReducer'
 
 const PatientState = props => {
 
-    const initialState = [{
+    const initialState = {
         token: localStorage.getItem('token'),
         authorised: false,
         patient: null,
         error: null
     }
-    ]
-    const [ state, dispatch] = useReducer( PatientReducer, initialState);
+    
+    const [ state, dispatch] = useReducer( patientReducer, initialState);
 
     //show the patients infos
     const showPatient = async () => {

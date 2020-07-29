@@ -3,13 +3,14 @@ import BookingContext from '../../context/booking/BookingContext';
 
 const BookingForm = () => {
     const bookingContext = useContext(BookingContext);
-    const {  makeAppointment } = bookingContext;
+    const {  makeAppointment, getAppointments } = bookingContext;
 
     useEffect(() => {
         setBooking({
             type:'',
             date: ''
         })
+        getAppointments();
     }, [])
 
     const [bookings, setBooking] = useState({

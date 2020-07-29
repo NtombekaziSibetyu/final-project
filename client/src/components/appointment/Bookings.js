@@ -1,9 +1,9 @@
 import React, {useEffect, useContext} from 'react';
 import BookingContext from '../../context/booking/BookingContext'
 
-const Bookings = ({ booking }) => {
+const Bookings = ({ booking}) => {
     const bookingContext = useContext(BookingContext);
-    const {  getAppointments, cancelAppointments } = bookingContext;
+    const { getAppointments, cancelAppointments } = bookingContext;
     const { _id, type, date} = booking;
 
     useEffect(() => {
@@ -18,8 +18,6 @@ const Bookings = ({ booking }) => {
 
     return (
         <div className='container'>
-            <h3>Your Appointments</h3>
-            <button className='btn btn-right'>New Appointment</button>
             <div className='card'>
             <h3 className="text text-left">
                Appointment Type : {type}

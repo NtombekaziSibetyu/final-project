@@ -49,7 +49,7 @@ async (req, res) => {
 
 
 //route method:DELETE api/bookings to cancel the patients bookings
-router.delete('/:id', auth,
+router.delete('/id', auth,
  async (req, res) => { 
     try {
         let booking = await Booking.findById(req.params.id);

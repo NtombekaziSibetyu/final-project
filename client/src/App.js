@@ -6,7 +6,8 @@ import Home from './components/layout/Home';
 import About from './components/layout/About';
 import Register from './components/Patients/register/Register';
 import Login from './components/Patients/login/Login';
-import Patient from './components/Patients/Patient'
+import Patient from './components/Patients/Patient';
+import BookingForm from './components/appointment/BookingForm';
 import PatientState from './context/patient/PatientState';
 import BookingState from './context/booking/BookingState';
 import SettingToken from './context/SettingToken'
@@ -31,6 +32,7 @@ const App = () => {
               <Route exact path='/login' component={Login}/>
               <Route exact path='/register' component={Register}/>
               <Route exact path='/patient' component={Patient}/>
+              <Route exact path='/book' component={BookingForm}/>
           </Switch>
         </div> 
         </Fragment>

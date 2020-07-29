@@ -20,7 +20,7 @@ export default ( state, action) => {
             return{
                 ...state,
                 bookings: state.bookings.filter(
-                    booking => booking._id !== action.payload),  
+                    booking => booking._id !== action.payload)  
             }
         default:
             return state;

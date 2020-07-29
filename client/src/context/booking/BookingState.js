@@ -14,7 +14,6 @@ import SettingToken from '../SettingToken';
 const BookingState = props => {
     const initialState = {
         bookings: [],
-        appointments: [],
         error: false
     }
 
@@ -74,7 +73,6 @@ const BookingState = props => {
         <BookingContext.Provider
             value = {{
                 bookings: state.bookings,
-                appointments: state.appointments,
                 error: state.error,
                 cancelAppointments,
                 makeAppointment,
