@@ -49,14 +49,14 @@ async (req, res) => {
 
 
 //route method:DELETE api/bookings to cancel the patients bookings
-router.delete('/id', auth,
+router.delete('/:id', auth,
  async (req, res) => { 
     try {
         let booking = await Booking.findById(req.params.id);
 
         if(!booking) return res.status(404).json({ msg: 'not found'});
 
-        if(booking.patient !== req.patient.id) {
+        if(booking.patient.toString() !== req.patient.id) {
             return res.status(401).json({ msg: 'Not authorized'});
         }
 

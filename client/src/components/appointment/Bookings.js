@@ -3,7 +3,7 @@ import BookingContext from '../../context/booking/BookingContext'
 
 const Bookings = ({ booking}) => {
     const bookingContext = useContext(BookingContext);
-    const { getAppointments, cancelAppointments } = bookingContext;
+    const {  getAppointments, cancelAppointments } = bookingContext;
     const { _id, type, date} = booking;
 
     useEffect(() => {
