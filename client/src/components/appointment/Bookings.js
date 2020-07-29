@@ -7,6 +7,7 @@ const Bookings = ({ booking }) => {
     const { _id, type, date} = booking;
 
     useEffect(() => {
+    
         getAppointments();
         // eslint-disable-next-line
     }, []);

@@ -7,7 +7,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator/check')
 const Patient = require('../models/Patients');
 
-//route GET api/auth login a patient
+//route method:GET api/auth - loads/ gets a logged patient information
 
 router.get('/', auth, 
 async (req, res) => { 
@@ -21,7 +21,7 @@ async (req, res) => {
    }    
 });
 
-//route POST api/auth to authorise  patient and get token
+//route api/auth method: POST  login
 router.post('/',
 [
     check('name','Please enter a valid full name'),

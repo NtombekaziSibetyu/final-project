@@ -7,11 +7,11 @@ const Login = props => {
 
     const { authorised, logIn, error, removeErrors} = patientContext;
 
-    useEffect(() => {
-        if(authorised){
-            props.history.push('/bookings');
+    useEffect( () => {
+        if( authorised) {
+            props.history.push('/patient')
         }
-        if(error === 'invalid credentials') {
+        if( error === 'invalid credentials' ) {
             alert('User cannot be registered');
             removeErrors(); 
         }
@@ -28,9 +28,7 @@ const Login = props => {
 
     const loginPatient = e => {
         e.preventDefault(); 
-        if(name || identityNo === ''){
-            document.body.innerHTML = '<'
-        }       
+              
         logIn(patient); 
         }
     //

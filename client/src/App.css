@@ -56,8 +56,12 @@
 }
 .footer .ul.li {
   list-style: none;
-  float: left;
+  display: inline;
+  
 }
 .footer .ul .li.i{
+  list-style: none;
+  display: block;
+  float: left;
   color: #FFFF;
 }

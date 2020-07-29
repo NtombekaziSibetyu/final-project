@@ -37,7 +37,7 @@ const BookingForm = () => {
             </div>
             <div className='form-group'>
                 <label htmlFor="date">Appointment Date</label>
-                <input type="datetime" name="date" id="date" 
+                <input type="datetime-local" name="date" id="date" 
                 value={date} onChange={handleChange} required/>
             </div>
             

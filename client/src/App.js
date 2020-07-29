@@ -30,10 +30,9 @@ const App = () => {
               <Route exact path='/about' component={About}/>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/register' component={Register}/>
-              <Route exact path='/bookings' component={Patient}/>
+              <Route exact path='/patient' component={Patient}/>
           </Switch>
         </div> 
-        <Footer/>
         </Fragment>
         </Router>
       </BookingState>

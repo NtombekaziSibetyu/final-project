@@ -6,9 +6,15 @@ import Bookings from '../appointment/Bookings';
 
 const Patient = () => {
     const bookingContext = useContext( BookingContext);
-    const patientContext = useContext(PatientContext)
-    const { bookings } = bookingContext
-    const { logout } = patientContext;
+    const patientContext = useContext( PatientContext)
+    const { bookings, getAppointments } = bookingContext
+    const { logout, authorised } = patientContext;
+
+    useEffect( ( ) => {
+        if( authorised ) {
+            getAppointments();
+        }
+    })
 
     const onClick = () => {
         logout();

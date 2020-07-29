@@ -3,12 +3,10 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator/check')
 const Patient = require('../models/Patients');
 
 //route method:POST api/patients to register a patient
-
 router.post('/', [
     check('name', 'name is required').not().isEmpty(),
     check('identityNo', 'ID number is required').isLength({min:13}),

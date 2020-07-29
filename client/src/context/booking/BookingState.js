@@ -9,7 +9,7 @@ import {
     BOOKING_ERROR,
     REMOVE_ERRORS
 } from '../types';
-
+import SettingToken from '../SettingToken';
 
 const BookingState = props => {
     const initialState = {
@@ -18,12 +18,18 @@ const BookingState = props => {
         error: false
     }
 
-    const [ state, dispatch ] = useReducer( bookingReducer, initialState)
+    const [ state, dispatch ] = useReducer( bookingReducer, initialState )
 
     //show appointments
     const getAppointments = async () =>{
+        let config = {     
+            headers: { 'Content-Type': 'application/json' }
+        }
+        if(localStorage.token){
+           config = SettingToken(localStorage.token);  
+        }
         try {
-           const res = await axios.get('/api/bookings') 
+           const res = await axios.get('/api/bookings', config) 
             dispatch({ type: GET_APPOINTMENTS, payload: res.data})
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg })
@@ -32,20 +38,31 @@ const BookingState = props => {
 
     //book an appointment
     const makeAppointment = async booking => {
-        const config = {
-            headers: {'Content-Type':'application/json'}
+        let config = {     
+            headers: { 'Content-Type': 'application/json' }
+        }
+        if(localStorage.token){
+           config = SettingToken(localStorage.token);  
         }
         try {
             const res = await axios.post('api/bookings', booking, config)
             dispatch({type: MAKE_APPOINTMENT, payload: res.data})
+            getAppointments();
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg })
         }
-    }
+      }
+
     //cancel appointment
     const cancelAppointments = async id => {
+        let config = {     
+            headers: { 'Content-Type': 'application/json' }
+        }
+        if(localStorage.token){
+           config = SettingToken(localStorage.token);  
+        }
         try {
-            await axios.delete(`/api/bookings/${id}`)
+            await axios.delete(`/api/bookings/${id}`, config)
             dispatch({ type: CANCEL_APPOINTMENT, payload: id})
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg})

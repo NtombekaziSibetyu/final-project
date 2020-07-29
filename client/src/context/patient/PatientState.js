@@ -25,14 +25,16 @@ const PatientState = props => {
     ]
     const [ state, dispatch] = useReducer( PatientReducer, initialState);
 
-    //show the patients info
+    //show the patients infos
     const showPatient = async () => {
-        if(localStorage.token){
-            SettingToken(localStorage.token);
+        let config = {     
+            headers: { 'Content-Type': 'application/json' }
         }
-        
+        if(localStorage.token){
+           config = SettingToken(localStorage.token);  
+        }
         try {
-            const res = await axios.get('/api/bookings')
+            const res = await axios.get('/api/auth', config)
             dispatch({type: GET_PATIENT, payload: res.data})
         } catch (error) {
             dispatch({ type: ERROR })
@@ -58,10 +60,14 @@ const PatientState = props => {
             })
         }
     }
+
     //patient login
     const logIn = async formData => {
-        const config = { headers: { 'Content-Type': 'application/json' }}
-        
+        const config = {
+            headers: {
+                'Content-Type':'application/json'
+            }
+        }; 
         try {
             const res = await axios.post('/api/auth', formData, config);
 

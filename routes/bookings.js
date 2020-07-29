@@ -8,7 +8,7 @@ const Booking = require('../models/Booking')
 router.get('/', auth,
 async (req, res) => { 
     try {
-        const booking = await Booking.find({ patient: req.patient});
+        const booking = await Booking.find({ patient : req.patient.id});
         res.json(booking);
     } catch (err) {
         console.error(err.message);
@@ -16,7 +16,7 @@ async (req, res) => {
     }
 });
 
-//route method:POST api/bookings to add the patients bookings
+//route method:POST api/bookings to add / make the patients bookings
 router.post('/', auth, [
     check('type','Please specify the type of appointment').not().isEmpty(),
     check('date', 'please chose a date and time for your apointment')
