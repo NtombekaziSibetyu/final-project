@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, Fragment } from 'react';
 import PatientContext from '../../context/patient/PatientContext';
 import BookingContext from '../../context/booking/BookingContext'; 
 import BookingForm from '../appointment/BookingForm';
@@ -24,12 +24,16 @@ const Patient = props => {
     }
     return (
         <div className='container'>
-        <button><a href="/book" >New Booking</a></button>
-        <button className='btn' style={{float:'right'}} onClick={onClick}> Log out</button> 
-           { bookings.length !== 0 ? 
+            <div>
+            <button className='btn' style={{float:'left'}}><a href="/book" >New Booking</a></button>
+            <button className='btn' style={{float:'right'}} onClick={onClick}> Log out</button> 
+            </div>
+          <div>
+          { bookings.length !== 0 ? 
            bookings.map(( booking => 
            <Bookings booking={booking} />)) 
-           : <BookingForm/> }
+          : <BookingForm/>}
+          </div>
         </div>
     )
 }

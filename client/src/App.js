@@ -10,13 +10,10 @@ import Patient from './components/Patients/Patient';
 import BookingForm from './components/appointment/BookingForm';
 import PatientState from './context/patient/PatientState';
 import BookingState from './context/booking/BookingState';
-import SettingToken from './context/SettingToken'
 import './App.css';
 import Footer from './components/layout/Footer';
 
-if(localStorage.token) {
-  SettingToken(localStorage.token);
-}
+
 const App = () => {
   
   return (
@@ -35,6 +32,7 @@ const App = () => {
               <Route exact path='/book' component={BookingForm}/>
           </Switch>
         </div> 
+        <Footer/>
         </Fragment>
         </Router>
       </BookingState>

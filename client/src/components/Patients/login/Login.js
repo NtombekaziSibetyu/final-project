@@ -8,7 +8,7 @@ const Login = props => {
     const { authorised, logIn, error, removeErrors} = patientContext;
 
     useEffect( () => {
-        if( authorised) {
+        if( authorised ) {
             props.history.push('/patient')
         }
         if( error === 'invalid credentials' ) {
@@ -47,9 +47,9 @@ const Login = props => {
                 </div>
                 <div className='form-group'>
                     <label htmlFor='identityNo'>Password</label>
-                    <input type='number' name='identityNo' 
+                    <input type='password' name='identityNo' 
                     value={identityNo} onChange={handleChange} 
-                     minLength='13' placeholder='enter ID number' required/>
+                     minLength='13' maxLength='13' placeholder='enter ID number' required/>
                 </div>
                 <div className='form-group'>
                     <button className='btn btn-block' type='submit'  >Login</button>

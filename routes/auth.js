@@ -25,7 +25,7 @@ async (req, res) => {
 router.post('/',
 [
     check('name','Please enter a valid full name'),
-    check('identityNo','Please enter a valid identity number').exists()
+    check('identityNo','Please enter a valid identity number').exists().isLength({min:13})
 ], 
 async (req, res) => {
     const errors = validationResult(req);

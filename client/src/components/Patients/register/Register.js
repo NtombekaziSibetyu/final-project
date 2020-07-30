@@ -10,11 +10,7 @@ const Register = props => {
 
     useEffect(() => {
         if(authorised){
-            props.history.push('/bookings');   
-        }
-        if(error === 'The ID number you have entered is already registered/ belongs to someone else'){
-            alert('User cannot be registered');
-            removeErrors();
+            props.history.push('/patient');   
         }
         
         // eslint-disable-next-line
@@ -34,7 +30,13 @@ const Register = props => {
 
     const registerPatient = e => {
         e.preventDefault();
+        if(error === 'The ID number you have entered is already registered/ belongs to someone else'){
+            alert('User cannot be registered');
+            removeErrors();
+        }else {
             register(patient);
+        }
+      
         }
     return (
         <div className='container'>
@@ -43,11 +45,11 @@ const Register = props => {
             <div className='form-group'>
                 <label htmlFor='name'>Fullname</label>
                 <input type="text" name='name' value={name} 
-                onChange={handleChange} required placeholder='Fullname'/>
+                onChange={handleChange} placeholder='Fullname' required/>
             </div>
             <div className='form-group'>
                     <label htmlFor='identityNo'>ID Number</label>
-                    <input type='number' name='identityNo' minLength='13'
+                    <input type='password' name='identityNo' minLength='13'
                     value={identityNo} onChange={handleChange} 
                     placeholder='enter ID number' required />
                 </div>

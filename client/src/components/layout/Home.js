@@ -9,7 +9,7 @@ const Home = () => {
             <div className='slide-container'>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ4T_OK0JA7vIVUn1_nFMMfB_zFLWbOPjLuOg&usqp=CAU"
                  alt="home" 
-                style={{ width:'100%' }}/>
+                style={{ height:'30%' }}/>
                 
             </div>
             <div>

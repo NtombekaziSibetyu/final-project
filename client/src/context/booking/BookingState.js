@@ -9,7 +9,6 @@ import {
     BOOKING_ERROR,
     REMOVE_ERRORS
 } from '../types';
-import SettingToken from '../SettingToken';
 
 const BookingState = props => {
     const initialState = {
@@ -19,6 +18,13 @@ const BookingState = props => {
 
     const [ state, dispatch ] = useReducer( bookingReducer, initialState )
 
+    const SettingToken = token => {
+        if(token) {
+            axios.defaults.headers.common['x-auth-token'] = token;
+        } else {
+            delete axios.defaults.headers.common['x-auth-token'];
+        }
+    };
     //show appointments
     const getAppointments = async () =>{
         let config = {     
@@ -45,7 +51,9 @@ const BookingState = props => {
         }
         try {
             const res = await axios.post('api/bookings', booking, config)
-            dispatch({type: MAKE_APPOINTMENT, payload: res.data})
+            dispatch({
+                type: MAKE_APPOINTMENT, 
+                payload: res.data})
             getAppointments();
         } catch (err) {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg })

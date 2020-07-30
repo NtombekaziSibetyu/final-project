@@ -9,8 +9,7 @@ const BookingForm = () => {
         setBooking({
             type:'',
             date: ''
-        })
-        getAppointments();
+        })  
     }, [])
 
     const [bookings, setBooking] = useState({
@@ -25,16 +24,15 @@ const BookingForm = () => {
     const addBooking = e => {
         e.preventDefault();
         makeAppointment(bookings);
+        getAppointments();
     }
     
     return (
-        <form onSubmit = {addBooking} className='form'>
-            <h3>Book an appointment</h3>
+        <form onSubmit = {addBooking} className='booking-form'>
             <div className='form-group'>
-                <label htmlFor="type">Type</label>
-                <input type="text" id="type" name="type" 
-                onChange={handleChange}
-                value={type} required/>
+                <label htmlFor='type'>Appointment Type</label>
+                <input type='text' name='type' id='type'
+                value={type} onChange={handleChange}></input>
             </div>
             <div className='form-group'>
                 <label htmlFor="date">Appointment Date</label>

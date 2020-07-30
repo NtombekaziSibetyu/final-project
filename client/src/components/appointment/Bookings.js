@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import BookingContext from '../../context/booking/BookingContext'
 
 const Bookings = ({ booking}) => {
@@ -7,7 +7,7 @@ const Bookings = ({ booking}) => {
     const { _id, type, date} = booking;
 
     useEffect(() => {
-    
+        
         getAppointments();
         // eslint-disable-next-line
     }, []);
@@ -19,12 +19,12 @@ const Bookings = ({ booking}) => {
     return (
         <div className='container'>
             <div className='card'>
-            <h3 className="text text-left">
+            <h5 className="text text-left">
                Appointment Type : {type}
-           </h3>
-           <h3 className="text text-left" >
+           </h5>
+           <h5 className="text text-left" >
                Date and Time : { date }
-           </h3>
+           </h5>
            <p>
                <button className='btn btn-dark' onClick={onClick}> Cancel </button>
            </p>

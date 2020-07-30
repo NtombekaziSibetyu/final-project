@@ -1,4 +1,4 @@
-import React, { useReducer, Provider} from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import {
     REGISTER,
@@ -10,7 +10,6 @@ import {
     ERROR,
     LOGOUT
 } from '../types';
-import SettingToken from '../SettingToken';
 import PatientContext from './PatientContext';
 import patientReducer from './patientReducer'
 
@@ -22,20 +21,25 @@ const PatientState = props => {
         patient: null,
         error: null
     }
-    
+    const SettingToken = token => {
+        if(token) {
+            axios.defaults.headers.common['x-auth-token'] = token;
+        } else {
+            delete axios.defaults.headers.common['x-auth-token'];
+        }
+    };
     const [ state, dispatch] = useReducer( patientReducer, initialState);
 
     //show the patients infos
     const showPatient = async () => {
-        let config = {     
-            headers: { 'Content-Type': 'application/json' }
-        }
         if(localStorage.token){
-           config = SettingToken(localStorage.token);  
-        }
+            SettingToken(localStorage.token);  
+         }
         try {
-            const res = await axios.get('/api/auth', config)
-            dispatch({type: GET_PATIENT, payload: res.data})
+            const res = await axios.get('/api/auth')
+            dispatch({
+                type: GET_PATIENT, 
+                payload: res.data})
         } catch (error) {
             dispatch({ type: ERROR })
         }
@@ -49,7 +53,7 @@ const PatientState = props => {
         try {
             const res = axios.post('/api/patients',formData, config);
             dispatch({
-                type:REGISTER,
+                type: REGISTER,
                 payload: res.data
             });
             showPatient();
@@ -84,8 +88,6 @@ const PatientState = props => {
         }
     }
 
-    
-
     //REMOVING THE ERRORS
     const removeErrors = () => dispatch({ type: REMOVE_ERRORS});
 
@@ -97,8 +99,7 @@ const PatientState = props => {
         value = {{
             token: state.token,
             authorised: state.authorised,
-            loading: state.loading,
-            user: state.user,
+            patient: state.patient,
             error: state.error,
             SettingToken,
             register,

@@ -18,7 +18,7 @@ async (req, res) => {
 
 //route method:POST api/bookings to add / make the patients bookings
 router.post('/', auth, [
-    check('type','Please specify the type of appointment').not().isEmpty(),
+    check('type','Please specify the type of appointment'),
     check('date', 'please chose a date and time for your apointment')
 ], 
 async (req, res) => { 

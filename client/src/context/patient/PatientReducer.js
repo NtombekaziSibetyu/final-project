@@ -30,7 +30,8 @@ export default (state, action) => {
                 ...state,
                 ...action.payload,
                 authorised: false,
-                patient:null 
+                patient:null ,
+                error: action.payload
             }
         case REMOVE_ERRORS:
             return {
