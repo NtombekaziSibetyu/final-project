@@ -13,7 +13,8 @@ import {
 const BookingState = props => {
     const initialState = {
         bookings: [],
-        error: false
+        error: false,
+        booked: false
     }
 
     const [ state, dispatch ] = useReducer( bookingReducer, initialState )
@@ -82,6 +83,7 @@ const BookingState = props => {
             value = {{
                 bookings: state.bookings,
                 error: state.error,
+                booked: state.booked,
                 cancelAppointments,
                 makeAppointment,
                 getAppointments

@@ -8,12 +8,13 @@ const Login = props => {
     const { authorised, logIn, error, removeErrors} = patientContext;
 
     useEffect( () => {
+        
+        if( error === 'invalid credentials' ) {
+            alert('Invalid credentials');
+            removeErrors(); 
+        }
         if( authorised ) {
             props.history.push('/patient')
-        }
-        if( error === 'invalid credentials' ) {
-            alert('User cannot be registered');
-            removeErrors(); 
         }
         // eslint-disable-next-line
     }, [ authorised, error, props.history])
@@ -26,9 +27,10 @@ const Login = props => {
     const { name, identityNo } = patient;
     const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
 
+    
     const loginPatient = e => {
         e.preventDefault(); 
-              
+           
         logIn(patient); 
         }
     //
@@ -46,7 +48,7 @@ const Login = props => {
                     onChange={handleChange} placeholder='fullname' required/>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor='identityNo'>Password</label>
+                    <label htmlFor='identityNo'>I.D Number</label>
                     <input type='password' name='identityNo' 
                     value={identityNo} onChange={handleChange} 
                      minLength='13' maxLength='13' placeholder='enter ID number' required/>

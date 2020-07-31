@@ -35,6 +35,7 @@ const Register = props => {
             removeErrors();
         }else {
             register(patient);
+            alert('Registered, login to view appointments');
         }
       
         }

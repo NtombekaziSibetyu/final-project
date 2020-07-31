@@ -10,6 +10,7 @@ export default ( state, action) => {
             return{
                ...state,
                bookings: [action.payload, ...state.bookings],
+               booked : true
             }
         case GET_APPOINTMENTS:
             return{
@@ -20,7 +21,8 @@ export default ( state, action) => {
             return{
                 ...state,
                 bookings: state.bookings.filter(
-                    booking => booking._id !== action.payload)  
+                    booking => booking._id !== action.payload),
+                booked: false  
             }
         default:
             return state;

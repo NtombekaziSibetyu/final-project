@@ -4,12 +4,16 @@ import '../../App.css'
 const Footer = () => {
     return (
         <div className='footer fixed'>
+            <p>Copyright@ clinic-booking</p> 
             <ul>
-                <li>Copyright@ clinic-booking </li>
-                <li><i class="fab fa-facebook"/></li>
-                <li><i class="fab fa-twitter"/></li>
-                <li><i class="fas fa-envelope"/></li>
-            </ul>
+                <li> <i className="fab fa-facebook"/></li>
+                <li><i className="fab fa-twitter"/></li>
+                <li><i className="fas fa-envelope"/></li>
+            </ul> 
+           
+            
+            
+            
         </div>
     )
 }

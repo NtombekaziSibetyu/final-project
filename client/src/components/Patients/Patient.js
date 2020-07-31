@@ -15,6 +15,7 @@ const Patient = props => {
             getAppointments();
         }
         if( !authorised) {
+           
             props.history.push('/');
         }
     },[ authorised, props.history])
@@ -24,15 +25,21 @@ const Patient = props => {
     }
     return (
         <div className='container'>
-            <div>
-            <button className='btn' style={{float:'left'}}><a href="/book" >New Booking</a></button>
-            <button className='btn' style={{float:'right'}} onClick={onClick}> Log out</button> 
-            </div>
+            <button><a href='/book'>New Appointment</a></button>
+            <button className='btn' style={{float:'right'}} 
+            onClick={onClick}> Log out</button>
+            
           <div>
           { bookings.length !== 0 ? 
-           bookings.map(( booking => 
-           <Bookings booking={booking} />)) 
-          : <BookingForm/>}
+           bookings.map(( booking =>
+            <Fragment >
+            <Bookings booking={booking} />
+            </Fragment> 
+           )) 
+          : <Fragment>
+              <BookingForm/>
+          </Fragment>
+          }
           </div>
         </div>
     )

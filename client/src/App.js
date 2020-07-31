@@ -26,10 +26,10 @@ const App = () => {
           <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/about' component={About}/>
-              <Route exact path='/login' component={Login}/>
-              <Route exact path='/register' component={Register}/>
-              <Route exact path='/patient' component={Patient}/>
-              <Route exact path='/book' component={BookingForm}/>
+              <Route  path='/login' component={Login}/>
+              <Route  path='/register' component={Register}/>
+              <Route  path='/patient' component={Patient}/>
+              <Route  path='/book' component={BookingForm}/>
           </Switch>
         </div> 
         <Footer/>
