@@ -15,24 +15,27 @@
 .text-left {
   text-align: left;
 }
-.responsive.picture{
-  margin: 5px;
-  padding: 0 6px;
+.responsive{
+  padding: 0;
   float: left;
   border: 1px solid #ccc;
   width: 24.99999%;
+  height: inherit;
 }
-.picture.img{
-  height: auto;
-  width: auto;
+
+​.col{
+  display: grid;
+  height: 30%;
+}
+.pic{
+  height: 80%;
 }
 @media only screen and (max-width: 700px) {
-  .responsive.picture {
+  .col .pic{
     width: 49.99999%;
-    margin: 6px 0;
   }
 }
-.picture:hover{
+.pic:hover{
   border: 1px solid #777;
 }
 .pic-text{
@@ -45,6 +48,7 @@
 
 .footer {
   margin-bottom: 0px;
+  margin-top: 2px;
   padding: 2px;
   width: 100%;
   background-color:#000000;
@@ -52,8 +56,7 @@
   text-align: center;
 }
 .footer .ul .li{
-  list-style-type: none;
-  display: inline-flex;  
+  display: inline;
 }
 .footer .i{
   float: left;

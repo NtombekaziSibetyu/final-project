@@ -6,14 +6,9 @@ const Footer = () => {
         <div className='footer fixed'>
             <p>Copyright@ clinic-booking</p> 
             <ul>
-                <li> <i className="fab fa-facebook"/></li>
-                <li><i className="fab fa-twitter"/></li>
-                <li><i className="fas fa-envelope"/></li>
+                <li> <i className="fab fa-facebook"/>  clinic@facebook.com</li>
+                <li><i className="fab fa-twitter"/>  @clinic_cpt</li>
             </ul> 
-           
-            
-            
-            
         </div>
     )
 }

@@ -7,8 +7,8 @@ const Home = () => {
             <h2>Wellness Clinic</h2>
             <h4>Login to book an appointment</h4>
             <div className='slide-container'>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ4T_OK0JA7vIVUn1_nFMMfB_zFLWbOPjLuOg&usqp=CAU"
-                 alt="home" 
+                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWX3klOKD02EhOQYkbZ09ZrQs6P9_1XtUGvA&usqp=CAU'         
+                alt="home" 
                 style={{ height:'30%' }}/>
                 
             </div>
