@@ -4,7 +4,7 @@ const auth = require('../middleware/auth')
 const { check, validationResult } = require('express-validator/check')
 const Booking = require('../models/Booking')
 
-//route method:GET api/bookings get the patients bookings
+//route api/bookings method:GET get the patients bookings
 router.get('/', auth,
 async (req, res) => { 
     try {
@@ -16,7 +16,7 @@ async (req, res) => {
     }
 });
 
-//route method:POST api/bookings to add / make the patients bookings
+//route api/bookings method:POST to add / make the patients bookings
 router.post('/', auth, [
     check('type','Please specify the type of appointment'),
     check('date', 'please chose a date and time for your apointment')
@@ -48,7 +48,7 @@ async (req, res) => {
 });
 
 
-//route method:DELETE api/bookings to cancel the patients bookings
+//route api/bookings method:DELETE to cancel the patients bookings
 router.delete('/:id', auth,
  async (req, res) => { 
     try {

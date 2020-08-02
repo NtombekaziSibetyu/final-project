@@ -8,8 +8,8 @@ connectDB();
 
 
 app.use(express.json({ extended : false }))
-//remove this down
-//app.get('/',(req, res) => res.json({ msg: 'clinic API'}))
+//remove this 
+app.get('/',(req, res) => res.json({ msg: 'clinic API'}))
 
 //routes 
 app.use('/api/patients', require('./routes/patients'));

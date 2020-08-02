@@ -7,7 +7,7 @@ const config = require('config');
 const { check, validationResult } = require('express-validator/check')
 const Patient = require('../models/Patients');
 
-//route method:GET api/auth - loads/ gets a logged patient information
+//route api/auth  method:GET - loads/ gets a logged patient information
 
 router.get('/', auth, 
 async (req, res) => { 
