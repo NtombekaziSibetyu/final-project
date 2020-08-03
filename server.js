@@ -16,17 +16,15 @@ app.use('/api/bookings', require('./routes/bookings'));
 
 //serve static production
 if( process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'))
+    app.use(express.static('client/build'));
     app.get('*', (req, res) => 
-    res.sendFile(path.resolve(__dirname, 'client','build','index.html')))
+    res.sendFile(path.resolve(__dirname, 'client','build','index.html')));
 } else {
     //remove this 
-    app.get('/',(req, res) => res.json({ msg: 'clinic API'}))
+    app.get('/',(req, res) => res.json({ msg: 'clinic API'}));
 
 }
 
-//use port 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+app.listen(PORT, () =>
+console.log(`server started on port ${PORT}`));
 
