@@ -11,6 +11,7 @@ import {
     LOGOUT
 } from '../types';
 import PatientContext from './PatientContext';
+
 import PatientReducer from './PatientReducer'
 
 const PatientState = props => {
