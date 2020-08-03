@@ -18,7 +18,7 @@ const Patient = props => {
            
             props.history.push('/');
         }
-    },[ authorised, props.history])
+    },[ authorised, getAppointments, props.history])
 
     const onClick = () => {
         logout();

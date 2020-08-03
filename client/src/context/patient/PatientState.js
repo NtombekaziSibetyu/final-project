@@ -11,7 +11,7 @@ import {
     LOGOUT
 } from '../types';
 import PatientContext from './PatientContext';
-import patientReducer from './patientReducer'
+import PatientReducer from './PatientReducer'
 
 const PatientState = props => {
 
@@ -28,7 +28,7 @@ const PatientState = props => {
             delete axios.defaults.headers.common['x-auth-token'];
         }
     };
-    const [ state, dispatch] = useReducer( patientReducer, initialState);
+    const [ state, dispatch] = useReducer( PatientReducer, initialState);
 
     //show the patients infos
     const showPatient = async () => {
