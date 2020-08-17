@@ -26,19 +26,21 @@ const Register = props => {
 
     const { name, identityNo, email, phone, address} = patient;
 
-    const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
+    const handleChange = e => setPatient(
+        {...patient, [e.target.name] : e.target.value}
+        );
 
     const registerPatient = e => {
         e.preventDefault();
+
         if(error === 'The ID number you have entered is already registered/ belongs to someone else'){
             alert('User cannot be registered');
             removeErrors();
         }else {
             register(patient);
-            alert('Registered, login to view appointments');
+            alert('Registered, login to make appointments');
         }
-      
-        }
+    }
     return (
         <div className='container'>
         <form onSubmit ={registerPatient} className='form' >
@@ -53,7 +55,7 @@ const Register = props => {
                     <input type='password' name='identityNo' minLength='13'
                     value={identityNo} onChange={handleChange} 
                     placeholder='enter ID number' required />
-                </div>
+            </div>
             <div className='form-group'>
                 <label htmlFor='email'>Email</label>
                 <input type='email' name='email' value={email} 

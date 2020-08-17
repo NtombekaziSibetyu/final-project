@@ -12,15 +12,18 @@ const Bookings = ({ booking}) => {
         // eslint-disable-next-line
     }, []);
 
+    const formatDate = (date) => {
+
+    }
     const onClick = () => {
         cancelAppointments(_id);
     }
 
     return (
-        <div className='container'>
-            <div className='card'>
-            <h5 className="text text-left">
-               Appointment Type : {type}
+        <div className = 'container'>
+            <div className = 'card'>
+            <h5 className = "text text-left">
+               Appointment Type : { type }
            </h5>
            <h5 className="text text-left" >
                Date and Time : { date }
@@ -28,7 +31,7 @@ const Bookings = ({ booking}) => {
            <p>
                <button className='btn btn-dark' onClick={onClick}> Cancel </button>
            </p>
-            </div> 
+          </div> 
         </div>
     )
 }

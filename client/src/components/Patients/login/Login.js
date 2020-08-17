@@ -6,11 +6,15 @@ const Login = props => {
     const patientContext = useContext( PatientContext );
 
     const { authorised, logIn, error, removeErrors} = patientContext;
-
+    const createNode = (element) => {
+        return document.createElement(element);
+    }
     useEffect( () => {
         
         if( error === 'invalid credentials' ) {
-            alert('Invalid credentials');
+            let message = document.getElementsByClassName('error')
+            message.innerHTML = 'Invalid credentials';
+            
             removeErrors(); 
         }
         if( authorised ) {
@@ -27,7 +31,6 @@ const Login = props => {
     const { name, identityNo } = patient;
     const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
 
-    
     const loginPatient = e => {
         e.preventDefault(); 
            
@@ -56,6 +59,7 @@ const Login = props => {
                 <div className='form-group'>
                     <button className='btn btn-block' type='submit'  >Login</button>
                 </div>
+                <span className='error'></span>
             </form>
         </div>
     )

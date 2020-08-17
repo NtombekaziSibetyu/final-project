@@ -1,8 +1,10 @@
+
 import React, { useContext, useEffect, useState} from 'react';
 import BookingContext from '../../context/booking/BookingContext';
 import PatientContext from '../../context/patient/PatientContext';
 
 const BookingForm = props => {
+
     const bookingContext = useContext(BookingContext);
     const patientContext = useContext( PatientContext)
 
@@ -16,6 +18,8 @@ const BookingForm = props => {
             date: ''
         })  
         if(booked) {
+           const msg = document.getElementsByClassName('booked') ;
+           msg.innerHTML = 'The time and date you chose is booked'
            props.history.push('/');
         }
     }, [booked, props.history])
@@ -43,7 +47,8 @@ const BookingForm = props => {
             <div className='form-group'>
                 <label htmlFor='type'>Appointment Type</label>
                 <input type='text' name='type' id='type'
-                value={type} onChange={handleChange}></input>
+                value={type} 
+                onChange={handleChange}></input>
             </div>
             <div className='form-group'>
                 <label htmlFor="date">Appointment Date</label>
@@ -54,6 +59,8 @@ const BookingForm = props => {
             <div className='form-btn'>
                 <button type="submit" className='btn btn-block'>Book Appointment</button>
             </div>
+            <span className='booked'>
+            </span>
         </form>
     </div>  
     )
