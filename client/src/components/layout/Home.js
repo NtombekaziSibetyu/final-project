@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useContext} from 'react';
+import PatientContext from "../../context/patient/PatientContext"
 
-const Home = () => {
+const Home = props => {
+
+    const patientContext = useContext(PatientContext)
+    const { authorised } = patientContext
+
+    const onClick = () => {
+        if(authorised) {
+            props.history.push('/book')
+        }
+        else {
+            props.history.push('/login')
+        }
+    }
 
     return (
         <div>
             <h2>Wellness Clinic</h2>
             <h4>Login to book an appointment</h4>
+            <div className="btn" onClick={onClick}>Book appointment</div>
             <div className='slide-container'>
                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWX3klOKD02EhOQYkbZ09ZrQs6P9_1XtUGvA&usqp=CAU'         
                 alt="home" 
@@ -14,13 +28,13 @@ const Home = () => {
             </div>
             <div>
                 <h4><i className='fas fa-clock' />  Working Hours </h4>
-                <p>Monday - Thursday : 08h00 - 19h00  </p>
-                <p>Friday : 08h00 - 18h00</p>
-                <p>Saturday  and Sunday : 09h00 -16h00</p>
+                <p>Monday - Thursday : 08h00 - 17h00  </p>
+                <p>Friday : 08h00 - 16h00</p>
+                <p>Saturday  and Sunday : 08h00 -15h00</p>
             </div>
             <div >
                 <h4><i className='fas fa-map-marker' style={{color:'#f44336' }}/>  Address </h4>
-                <p>238 Dassuty Road</p>
+                <p>238 Dassty Road</p>
                 <p>Cape Town</p>
                 <p>Western Cape</p>
             </div>

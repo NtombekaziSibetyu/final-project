@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState} from 'react';
 import PatientContext from '../../../context/patient/PatientContext';
-import PatientState from '../../../context/patient/PatientState';
 
 const Login = props => {
     const patientContext = useContext( PatientContext );
@@ -24,11 +23,11 @@ const Login = props => {
     }, [ authorised, error, props.history])
 
     const [patient, setPatient] = useState({
-        name: '',
-        identityNo: ''  
+        email: '',
+        password: ''  
     })
 
-    const { name, identityNo } = patient;
+    const { email, password } = patient;
     const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
 
     const loginPatient = e => {
@@ -46,15 +45,15 @@ const Login = props => {
             <form onSubmit={loginPatient} className='form'>
                 <h3>Login</h3>
                 <div className='form-group'>
-                    <label htmlFor='name'>Fullname</label>
-                    <input type='text' name='name' value={name} 
-                    onChange={handleChange} placeholder='fullname' required/>
+                    <label htmlFor='email'>Email Adsress</label>
+                    <input type='email' name='email' value={email} 
+                    onChange={handleChange} placeholder='Registered Email Address' required/>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor='identityNo'>I.D Number</label>
-                    <input type='password' name='identityNo' 
-                    value={identityNo} onChange={handleChange} 
-                     minLength='13' maxLength='13' placeholder='enter ID number' required/>
+                    <label htmlFor='password'>Password</label>
+                    <input type='password' name='password' 
+                    value={password} onChange={handleChange} 
+                     minLength='8' maxLength='13' placeholder='Enter password' required/>
                 </div>
                 <div className='form-group'>
                     <button className='btn btn-block' type='submit'  >Login</button>

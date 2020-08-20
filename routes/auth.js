@@ -13,7 +13,7 @@ router.get('/', auth,
 async (req, res) => { 
 
    try {
-       const patient = await Patient.findById(req.patient.id).select('-identityNo');
+       const patient = await Patient.findById(req.patient.id).select('-password');
        res.json(patient);
    } catch (err) {
        console.error(err.message);
@@ -24,8 +24,8 @@ async (req, res) => {
 //route api/auth method: POST  login
 router.post('/',
 [
-    check('name','Please enter a valid full name'),
-    check('identityNo','Please enter a valid identity number').exists().isLength({min:13})
+    check('email','Please enter a valid email address').isEmail(),
+    check('password','Please enter a valid identity number').exists().isLength({min:8})
 ], 
 async (req, res) => {
     const errors = validationResult(req);
@@ -34,16 +34,16 @@ async (req, res) => {
         return res.status(400).json({ errors: errors.array()})
         }
 
-    const { name, identityNo } = req.body;
+    const { email, password } = req.body;
 
     try {
-        let patient = await Patient.findOne({ name });
+        let patient = await Patient.findOne({ email });
 
         if(!patient){
             return res.status(400).json({msg:'invalid credentials'});
         }
 
-        const isMatch = bcrypt.compare(identityNo, patient.identityNo);
+        const isMatch = bcrypt.compare(password, patient.password);
 
         if(!isMatch){
             return res.status(400).json({msg:'invalid credentials'})

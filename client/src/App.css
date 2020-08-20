@@ -4,6 +4,10 @@
   border: thin #757575;
   box-shadow: #424242;
 }
+.card {
+  margin: 10;
+  padding: 10px;
+}
 .text-center {
   text-align: center;
 }
@@ -51,7 +55,7 @@
   margin-top: 2px;
   padding: 2px;
   width: 100%;
-  background-color:#000000;
+  background-color:#263238;
   color: #FFFFFF;
   text-align: center;
 }

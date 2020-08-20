@@ -4,7 +4,7 @@ import BookingContext from '../../context/booking/BookingContext'
 const Bookings = ({ booking}) => {
     const bookingContext = useContext(BookingContext);
     const {  getAppointments, cancelAppointments } = bookingContext;
-    const { _id, type, date} = booking;
+    const { _id, type, date, time} = booking;
 
     useEffect(() => {
         
@@ -26,7 +26,10 @@ const Bookings = ({ booking}) => {
                Appointment Type : { type }
            </h5>
            <h5 className="text text-left" >
-               Date and Time : { date }
+               Date : { date }
+           </h5 >
+           <h5  className="text text-left">
+               Time : {time}
            </h5>
            <p>
                <button className='btn btn-dark' onClick={onClick}> Cancel </button>

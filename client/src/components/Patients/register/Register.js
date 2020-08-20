@@ -10,7 +10,7 @@ const Register = props => {
 
     useEffect(() => {
         if(authorised){
-            props.history.push('/patient');   
+            props.history.push('/login');   
         }
         
         // eslint-disable-next-line
@@ -20,11 +20,12 @@ const Register = props => {
         name: '',
         identityNo: '',
         email: '',
+        password:"",
         phone: '',
         address: ''
     })
 
-    const { name, identityNo, email, phone, address} = patient;
+    const { name, identityNo, email, password, phone, address} = patient;
 
     const handleChange = e => setPatient(
         {...patient, [e.target.name] : e.target.value}
@@ -60,6 +61,11 @@ const Register = props => {
                 <label htmlFor='email'>Email</label>
                 <input type='email' name='email' value={email} 
                 onChange={handleChange}  placeholder='Email' required/>
+            </div>
+            <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" value={password}
+                onChange={handleChange}  placeholder='Password' required/>
             </div>
             <div className='form-group'>
                 <label htmlFor='phone'>Phone</label>

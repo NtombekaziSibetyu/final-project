@@ -19,7 +19,8 @@ async (req, res) => {
 //route api/bookings method:POST to add / make the patients bookings
 router.post('/', auth, [
     check('type','Please specify the type of appointment'),
-    check('date', 'please chose a date and time for your apointment')
+    check('date', 'please chose a date for your apointment'),
+    check("time","Please choose a time")
 ], 
 async (req, res) => { 
     const errors = validationResult(req);
@@ -27,12 +28,13 @@ async (req, res) => {
         return res.status(400).json({ errors: errors.array()})
         }
 
-    const { type, date } = req.body;
+    const { type, date, time } = req.body;
 
     try {
         const newBooking = new Booking({
             type,
             date,
+            time,
             patient: req.patient.id
         })
 

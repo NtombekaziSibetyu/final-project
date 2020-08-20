@@ -6,8 +6,7 @@ import {
     MAKE_APPOINTMENT,
     GET_APPOINTMENTS,
     CANCEL_APPOINTMENT,
-    BOOKING_ERROR,
-    REMOVE_ERRORS
+    BOOKING_ERROR
 } from '../types';
 
 const BookingState = props => {

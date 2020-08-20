@@ -11,7 +11,8 @@ router.post('/', [
     check('name', 'name is required').not().isEmpty(),
     check('identityNo', 'ID number is required').isLength({min:13}),
     check('email', 'please include a valid email').isEmail(),
-    check('phone','please a valid cell number').isLength({ min:10})
+    check("password",'Please enter a password').isLength({min:8}),
+    check('phone','please enter a valid cell number').isLength({ min:10})
 ], 
 async (req, res) => { 
     const errors = validationResult(req);
@@ -19,7 +20,7 @@ async (req, res) => {
         return res.status(400).json({ errors: errors.array()})
         }
         
-        const { name, identityNo, email, phone, address} = req.body;
+        const { name, identityNo, email, password, phone, address} = req.body;
 
         try {
             let patient = await Patient.findOne({ identityNo })
@@ -32,13 +33,14 @@ async (req, res) => {
                 name,
                 identityNo,
                 email,
+                password,
                 phone,
                 address
             });
 
             const salt = await bcrypt.genSalt(10);
 
-            patient.identityNo = await bcrypt.hash(identityNo, salt);
+            patient.password = await bcrypt.hash(password, salt);
 
             await patient.save();
 

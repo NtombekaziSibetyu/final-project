@@ -13,6 +13,10 @@ const mongoose = require('mongoose');
         type: String,
         required: true
     },
+    password:{
+        type:String,
+        required:true
+    },
     phone:{
         type: String,
         required: true
