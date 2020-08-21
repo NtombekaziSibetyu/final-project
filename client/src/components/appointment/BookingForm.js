@@ -53,10 +53,12 @@ const BookingForm = props => {
             <label htmlFor="types">Choose Type</label>
             <select name="types" id="types" 
              required style={{display:"inline"}} >
+
                 <option id="type" value={{type:"general"}} onChange={handleChange}>General</option>
                 <option id="type" value={{type:"Dentist"}} onChange={handleChange}>Dentist</option>
                 <option id="type" value={{type:"Optometry"}} onChange={handleChange}>Eye Appointment</option>
                 <option id="type" value={{type:"child"}} onChange={handleChange}>Child Appointment</option>
+            
             </select>
             </div> 
             <div className='form-group center'>
@@ -68,6 +70,7 @@ const BookingForm = props => {
                 <label htmlFor="time">Appointment Time</label>
                 <select name="time" id="time" 
                  required style={{display:"inline"}}>
+
                     <option value={{time:"8:30-9:30"}} onChange={handleChange}>8:30-9:30</option>
                     <option value={{time:"9:30-10:30"}} onChange={handleChange}>9:30-10:30</option>
                     <option value={{time:"10:30-11:30"}} onChange={handleChange}>10:30-11:30</option>
@@ -75,6 +78,7 @@ const BookingForm = props => {
                     <option value={{time:"13:30-14:30"}} onChange={handleChange}>13:30-14:30</option>
                     <option value={{time:"14:30-15:30"}} onChange={handleChange}>14:30-15:30</option>
                     <option value={{time:"15:30-16:30"}} onChange={handleChange}>15:30-16:30</option>
+                
                 </select>
             </div>
             <div className='form-btn'>
