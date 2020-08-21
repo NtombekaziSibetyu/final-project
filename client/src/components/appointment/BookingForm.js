@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState} from 'react';
 import BookingContext from '../../context/booking/BookingContext';
 import PatientContext from '../../context/patient/PatientContext';
+import './booking.css'
 
 const BookingForm = props => {
 
@@ -31,7 +32,9 @@ const BookingForm = props => {
 
     const { type, date, time} = bookings;
 
-    const handleChange = e => setBooking({...bookings, [e.target.name]: e.target.value});
+    const handleChange = e => setBooking(
+        {...bookings, [e.target.name]: e.target.value}
+        );
 
     const addBooking = e => {
         e.preventDefault();
@@ -45,33 +48,38 @@ const BookingForm = props => {
     return (
         <div className="container center">
         <form onSubmit = { addBooking } className='booking-form'>
-            <div className="from-group">
-            <div className="input-field col">
-                <label htmlFor="type">Select Appointment Type</label>
-                <select name="type" id="type" className="dropdowm-content">
-                <option value="" disabled >Choose your option</option>
-                <option value={type} defaultValue="">Dentist</option>
-                <option value={type}>Optometrist</option>
-                <option value={type}>General</option>
-                <option value={type}>Child Check-up</option>
-                </select>
-            </div>
-            </div>
-            <div className='form-group'>
+            <h4>Make an Appointment</h4>
+        <div className="form-group center">
+            <label htmlFor="types">Choose Type</label>
+            <select name="types" id="types" 
+             required style={{display:"inline"}} >
+                <option id="type" value={{type:"general"}} onChange={handleChange}>General</option>
+                <option id="type" value={{type:"Dentist"}} onChange={handleChange}>Dentist</option>
+                <option id="type" value={{type:"Optometry"}} onChange={handleChange}>Eye Appointment</option>
+                <option id="type" value={{type:"child"}} onChange={handleChange}>Child Appointment</option>
+            </select>
+            </div> 
+            <div className='form-group center'>
                 <label htmlFor="date">Appointment Date</label>
                 <input type="date" name="date" id="date" 
                 value={date} onChange={handleChange} required/>
             </div>
-            <div className="from-group">
+            <div className="form-group center">
                 <label htmlFor="time">Appointment Time</label>
-                <select>
-                    <option></option>
+                <select name="time" id="time" 
+                 required style={{display:"inline"}}>
+                    <option value={{time:"8:30-9:30"}} onChange={handleChange}>8:30-9:30</option>
+                    <option value={{time:"9:30-10:30"}} onChange={handleChange}>9:30-10:30</option>
+                    <option value={{time:"10:30-11:30"}} onChange={handleChange}>10:30-11:30</option>
+                    <option value={{time:"12:30-13:30"}} onChange={handleChange}>12:30-13:30</option>
+                    <option value={{time:"13:30-14:30"}} onChange={handleChange}>13:30-14:30</option>
+                    <option value={{time:"14:30-15:30"}} onChange={handleChange}>14:30-15:30</option>
+                    <option value={{time:"15:30-16:30"}} onChange={handleChange}>15:30-16:30</option>
                 </select>
             </div>
             <div className='form-btn'>
-                <button type="submit" className='btn btn-block'>Book Appointment</button>
-            </div>
-            
+                <button type="submit" className='btn btn-block btn-center'>Book Appointment</button>
+            </div>    
         </form>
     </div>  
     )

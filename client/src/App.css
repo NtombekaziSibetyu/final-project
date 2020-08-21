@@ -1,7 +1,7 @@
 
 .container {
   background-color: transparent;
-  border: thin #757575;
+  border:  #757575;
   box-shadow: #424242;
 }
 .card {
@@ -18,6 +18,10 @@
 
 .text-left {
   text-align: left;
+}
+.button{
+  color:#00bfa5 ;
+  padding: 10px;
 }
 .responsive{
   padding: 0;
@@ -51,8 +55,9 @@
 }
 
 .footer {
-  margin-bottom: 0px;
-  margin-top: 2px;
+  position: sticky;
+  margin-bottom: 0;
+  margin-top: 20px;
   padding: 2px;
   width: 100%;
   background-color:#263238;
@@ -60,9 +65,13 @@
   text-align: center;
 }
 .footer .ul .li{
+  list-style: none;
   display: inline;
 }
 .footer .i{
   float: left;
   color: #FFFFFF
+}
+.footer .a {
+  color: #FFFFFF;
 }

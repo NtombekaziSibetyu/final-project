@@ -37,7 +37,7 @@ const Login = props => {
         }
     //
     return (
-        <div className='container'>
+        <div className='container center'>
             <div>
                 <h4>Not registered?</h4>
                 <a href="/register">Register here</a>
