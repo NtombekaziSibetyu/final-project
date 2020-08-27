@@ -30,7 +30,7 @@ const BookingForm = props => {
         time:''
     });
 
-    const { type, date, time} = bookings;
+    const { type, date, time } = bookings;
 
     const handleChange = e => setBooking(
         {...bookings, [e.target.name]: e.target.value}
@@ -71,7 +71,7 @@ const BookingForm = props => {
                 <select name="time" id="time" 
                  required style={{display:"inline"}}>
 
-                    <option value={{time:"8:30-9:30"}} onChange={handleChange}>8:30-9:30</option>
+                    <option value={{time:"08:00"}} onChange={handleChange}>8:30-9:30</option>
                     <option value={{time:"9:30-10:30"}} onChange={handleChange}>9:30-10:30</option>
                     <option value={{time:"10:30-11:30"}} onChange={handleChange}>10:30-11:30</option>
                     <option value={{time:"12:30-13:30"}} onChange={handleChange}>12:30-13:30</option>
