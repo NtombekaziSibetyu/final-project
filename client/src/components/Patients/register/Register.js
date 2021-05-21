@@ -63,6 +63,7 @@ const Register = props => {
             <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" value={password}
+                minLength='8' maxLength='13'
                 onChange={handleChange}  placeholder='Password' required/>
             </div>
             <div className='form-group'>

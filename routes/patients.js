@@ -11,7 +11,7 @@ router.post('/', [
     check('name', 'name is required').not().isEmpty(),
     check('identityNo', 'ID number is required').isLength({min:13}),
     check('email', 'please include a valid email').isEmail(),
-    check("password",'Please enter a password').isLength({min:8}),
+    check("password",'Please enter a password with atleast 6 characters').isLength({min:8}),
     check('phone','please enter a valid cell number').isLength({ min:10})
 ], 
 async (req, res) => { 
