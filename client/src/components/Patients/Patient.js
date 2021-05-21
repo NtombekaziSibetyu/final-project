@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, Fragment } from 'react';
+import { useHistory } from "react-router-dom";
 import PatientContext from '../../context/patient/PatientContext';
 import BookingContext from '../../context/booking/BookingContext'; 
 import BookingForm from '../appointment/BookingForm';
@@ -7,6 +8,7 @@ import Bookings from '../appointment/Bookings';
 const Patient = props => {
     const bookingContext = useContext( BookingContext);
     const patientContext = useContext( PatientContext)
+    const history = useHistory();
     const { bookings, getAppointments } = bookingContext
     const { logout, authorised } = patientContext;
 

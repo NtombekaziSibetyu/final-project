@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState} from 'react';
+import { useHistory } from "react-router-dom";
 import BookingContext from '../../context/booking/BookingContext';
 import './booking.css'
 
@@ -7,6 +8,8 @@ const BookingForm = props => {
     const bookingContext = useContext(BookingContext);
 
     const { booked, makeAppointment } = bookingContext;
+
+    const history = useHistory();
 
     // useEffect(() => {
     //     if( booked ) {

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState} from 'react';
+import { useHistory } from "react-router-dom";
 import PatientContext from '../../../context/patient/PatientContext'
 
 
 const Register = props => {
 
     const patientContext = useContext( PatientContext );
+    const history = useHistory();
 
     const { register, error, removeErrors} = patientContext;
 

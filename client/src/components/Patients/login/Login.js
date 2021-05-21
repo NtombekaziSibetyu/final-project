@@ -1,8 +1,10 @@
 import React, { useEffect, useContext, useState} from 'react';
+import { useHistory } from "react-router-dom";
 import PatientContext from '../../../context/patient/PatientContext';
 
 const Login = props => {
     const patientContext = useContext( PatientContext );
+    const history = useHistory();
 
     const { authorised, logIn, error, removeErrors} = patientContext;
     
