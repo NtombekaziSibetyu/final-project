@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth')
 const { check, validationResult } = require('express-validator/check')
+const Patient = require('../models/Patients')
 const Booking = require('../models/Booking')
 
 //route api/bookings method:GET get the patients bookings
 router.get('/', auth,
 async (req, res) => { 
     try {
-        const booking = await Booking.find({ patient : req.patient.id});
+        const booking = await Booking.find({ patient : req.patient.id}).sort({ date: -1});
         res.json(booking);
     } catch (err) {
         console.error(err.message);

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState} from 'react';
 import BookingContext from '../../context/booking/BookingContext';
+import { useHistory } from "react-router-dom";
 import './booking.css'
 
 const BookingForm = props => {
@@ -7,6 +8,7 @@ const BookingForm = props => {
     const bookingContext = useContext(BookingContext);
 
     const { booked, makeAppointment } = bookingContext;
+    const history = useHistory();
 
     useEffect(() => {
         if( booked ) {
@@ -22,15 +24,17 @@ const BookingForm = props => {
         time:''
     });
 
-    const { type, date, time } = booking;
+    const [type, setType] = useState('');
 
-    const handleChange = e => setBooking(
-        {...booking, [e.target.name]: e.target.value}
-        );
+    const [time, setTime] = useState('');
+
+    const  [date, setDate] = useState(Date.now());
 
     const addBooking = e => {
         e.preventDefault();
+        const booking = {type, time, date}
         makeAppointment(booking);
+        props.history.push('/patient');
     }
         
     return (
@@ -39,33 +43,35 @@ const BookingForm = props => {
             <h4>Make an Appointment</h4>
         <div className="form-group center">
             <label htmlFor="types">Choose Type</label>
-            <select name="types" id="types" 
+            <select name="types" id="types" value={type}
+            onChange={(e) => setType(e.target.value)}
              required style={{display:"inline"}} >
 
-                <option id="type" value={type === "general"} onChange={handleChange}>General</option>
-                <option id="type" value={type ===" Dentist"} onChange={handleChange}>Dentist</option>
-                <option id="type" value={type === "Optometry"} onChange={handleChange}>Eye Appointment</option>
-                <option id="type" value={type === "child"} onChange={handleChange}>Child Appointment</option>
+                <option id="type" value="general" >General</option>
+                <option id="type" value= " Dentist">Dentist</option>
+                <option id="type" value="Optometry">Eye Appointment</option>
+                <option id="type" value="child">Child Appointment</option>
             
             </select>
             </div> 
             <div className='form-group center'>
                 <label htmlFor="date">Appointment Date</label>
                 <input type="date" name="date" id="date" 
-                value={date} onChange={handleChange} required/>
+                value={date} onChange={(e) => setDate(e.target.value)} required/>
             </div>
             <div className="form-group center">
                 <label htmlFor="time">Appointment Time</label>
-                <select name="time" id="time" 
+                <select name="time" id="time" value={time}
+                onChange={(e) => setTime(e.target.value)}
                  required style={{display:"inline"}}>
 
-                    <option value={time === "08:00"} onChange={handleChange}>8:30-9:30</option>
-                    <option value={time === "9:30-10:30"} onChange={handleChange}>9:30-10:30</option>
-                    <option value={time === "10:30-11:30"} onChange={handleChange}>10:30-11:30</option>
-                    <option value={time === "12:30-13:30"} onChange={handleChange}>12:30-13:30</option>
-                    <option value={time === "13:30-14:30"} onChange={handleChange}>13:30-14:30</option>
-                    <option value={time === "14:30-15:30"} onChange={handleChange}>14:30-15:30</option>
-                    <option value={time === "15:30-16:30"} onChange={handleChange}>15:30-16:30</option>
+                    <option value= "08:00">8:30-9:30</option>
+                    <option value="9:30-10:30">9:30-10:30</option>
+                    <option value="10:30-11:30">10:30-11:30</option>
+                    <option value="12:30-13:30">12:30-13:30</option>
+                    <option value="13:30-14:30">13:30-14:30</option>
+                    <option value="14:30-15:30">14:30-15:30</option>
+                    <option value="15:30-16:30">15:30-16:30</option>
                 
                 </select>
             </div>

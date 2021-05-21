@@ -32,4 +32,4 @@ const mongoose = require('mongoose');
 });
 
 
-module.exports = mongoose.model('patients', PatientsSchema);
+module.exports = mongoose.model('patient', PatientsSchema);
