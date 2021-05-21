@@ -5,19 +5,15 @@ const Login = props => {
     const patientContext = useContext( PatientContext );
 
     const { authorised, logIn, error, removeErrors} = patientContext;
-    const createNode = (element) => {
-        return document.createElement(element);
-    }
+    
     useEffect( () => {
         
         if( error === 'invalid credentials' ) {
-            let message = document.getElementsByClassName('error')
-            message.innerHTML = 'Invalid credentials';
-            
+        
             removeErrors(); 
         }
         if( authorised ) {
-            props.history.push('/patient')
+            props.history.push('/patient');
         }
         // eslint-disable-next-line
     }, [ authorised, error, props.history])

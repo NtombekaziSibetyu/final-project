@@ -10,7 +10,7 @@ import BookingForm from './components/appointment/BookingForm';
 import PatientState from './context/patient/PatientState';
 import BookingState from './context/booking/BookingState';
 import './App.css';
-import Footer from './components/layout/Footer';
+// import Footer from './components/layout/Footer';
 
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
               <Route  path='/book' component={BookingForm}/>
           </Switch>
         </div> 
-        <Footer/>
+        {/* <Footer/> */}
         </Fragment>
         </Router>
       </BookingState>

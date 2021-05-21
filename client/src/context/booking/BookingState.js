@@ -2,11 +2,13 @@ import React, { useReducer} from 'react';
 import axios from 'axios';
 import bookingReducer from './bookingReducer';
 import BookingContext from './BookingContext';
+import SetToken from '../../utils/setToken';
 import {
     MAKE_APPOINTMENT,
     GET_APPOINTMENTS,
     CANCEL_APPOINTMENT,
-    BOOKING_ERROR
+    BOOKING_ERROR,
+    REMOVE_ERRORS
 } from '../types';
 
 const BookingState = props => {
@@ -18,20 +20,13 @@ const BookingState = props => {
 
     const [ state, dispatch ] = useReducer( bookingReducer, initialState )
 
-    const SettingToken = token => {
-        if(token) {
-            axios.defaults.headers.common['x-auth-token'] = token;
-        } else {
-            delete axios.defaults.headers.common['x-auth-token'];
-        }
-    };
     //show appointments
     const getAppointments = async () =>{
         let config = {     
             headers: { 'Content-Type': 'application/json' }
         }
         if(localStorage.token){
-           config = SettingToken(localStorage.token);  
+           config = SetToken(localStorage.token);  
         }
         try {
            const res = await axios.get('/api/bookings', config) 
@@ -47,7 +42,7 @@ const BookingState = props => {
             headers: { 'Content-Type': 'application/json' }
         }
         if(localStorage.token){
-           config = SettingToken(localStorage.token);  
+           config = SetToken(localStorage.token);  
         }
         try {
             const res = await axios.post('api/bookings', booking, config)
@@ -66,7 +61,7 @@ const BookingState = props => {
             headers: { 'Content-Type': 'application/json' }
         }
         if(localStorage.token){
-           config = SettingToken(localStorage.token);  
+           config = SetToken(localStorage.token);  
         }
         try {
             await axios.delete(`/api/bookings/${id}`, config)
@@ -75,6 +70,9 @@ const BookingState = props => {
             dispatch({ type: BOOKING_ERROR, payload: err.response.msg})
         }
     }
+
+    //REMOVING THE ERRORS
+    const removeErrors = () => dispatch({ type: REMOVE_ERRORS})
 
     
     return (
@@ -85,7 +83,9 @@ const BookingState = props => {
                 booked: state.booked,
                 cancelAppointments,
                 makeAppointment,
-                getAppointments
+                getAppointments,
+                SetToken,
+                removeErrors
             }}>
            {props.children} 
         </BookingContext.Provider>

@@ -15,8 +15,7 @@ const Patient = props => {
             getAppointments();
         }
         if( !authorised) {
-           
-            props.history.push('/');
+            props.history.push('/login');
         }
     },[ authorised, getAppointments, props.history])
 
@@ -30,7 +29,7 @@ const Patient = props => {
             onClick={onClick}> Log out</button>
             
           <div>
-          { bookings.length !== 0 ? 
+          { bookings.length > 0 ? 
            bookings.map(( booking =>
             <Fragment >
             <Bookings booking={booking} />
@@ -38,7 +37,7 @@ const Patient = props => {
            )) 
           : <Fragment>
               <BookingForm/>
-          </Fragment>
+            </Fragment>
           }
           </div>
         </div>

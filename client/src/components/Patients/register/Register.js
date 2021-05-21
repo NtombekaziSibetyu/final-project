@@ -6,15 +6,7 @@ const Register = props => {
 
     const patientContext = useContext( PatientContext );
 
-    const { authorised, register, error, removeErrors} = patientContext;
-
-    useEffect(() => {
-        if(authorised){
-            props.history.push('/login');   
-        }
-        
-        // eslint-disable-next-line
-    }, [ authorised, error, props.history]);
+    const { register, error, removeErrors} = patientContext;
 
     const [patient, setPatient] = useState({
         name: '',
@@ -39,9 +31,15 @@ const Register = props => {
             removeErrors();
         }else {
             register(patient);
+            props.history.push('/patient')
             alert('Registered, login to make appointments');
         }
     }
+
+    // useEffect(() => {
+       
+    //     // eslint-disable-next-line
+    // }, [ authorised, error, props.history]);
     return (
         <div className='container'>
         <form onSubmit ={registerPatient} className='form' >

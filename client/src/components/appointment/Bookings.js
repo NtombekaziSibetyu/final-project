@@ -7,14 +7,13 @@ const Bookings = ({ booking}) => {
     const { _id, type, date, time} = booking;
 
     useEffect(() => {
-        
         getAppointments();
         // eslint-disable-next-line
     }, []);
 
-    const formatDate = (date) => {
+    // const formatDate = (date) => {
 
-    }
+    // }
     const onClick = () => {
         cancelAppointments(_id);
     }

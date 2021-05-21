@@ -1,22 +1,14 @@
 import React, { useContext, useEffect, useState} from 'react';
 import BookingContext from '../../context/booking/BookingContext';
-import PatientContext from '../../context/patient/PatientContext';
 import './booking.css'
 
 const BookingForm = props => {
 
     const bookingContext = useContext(BookingContext);
-    const patientContext = useContext( PatientContext)
 
-    const { booked, makeAppointment, getAppointments } = bookingContext;
-    const { authorised } = patientContext;
+    const { booked, makeAppointment } = bookingContext;
 
     useEffect(() => {
-        setBooking({
-            type:'',
-            date: '',
-            time:''
-        })  
         if( booked ) {
            const msg = document.getElementsByClassName('booked') ;
            msg.innerHTML = 'The time and date you chose is booked'
@@ -24,25 +16,21 @@ const BookingForm = props => {
         }
     }, [ booked, props.history])
 
-    const [ bookings, setBooking ] = useState({
+    const [ booking, setBooking ] = useState({
         type:'',
         date:'',
         time:''
     });
 
-    const { type, date, time } = bookings;
+    const { type, date, time } = booking;
 
     const handleChange = e => setBooking(
-        {...bookings, [e.target.name]: e.target.value}
+        {...booking, [e.target.name]: e.target.value}
         );
 
     const addBooking = e => {
         e.preventDefault();
-        makeAppointment(bookings);
-        if(authorised){
-            getAppointments(); 
-            props.history.push('/patient')
-        }
+        makeAppointment(booking);
     }
         
     return (
@@ -54,10 +42,10 @@ const BookingForm = props => {
             <select name="types" id="types" 
              required style={{display:"inline"}} >
 
-                <option id="type" value={{type:"general"}} onChange={handleChange}>General</option>
-                <option id="type" value={{type:"Dentist"}} onChange={handleChange}>Dentist</option>
-                <option id="type" value={{type:"Optometry"}} onChange={handleChange}>Eye Appointment</option>
-                <option id="type" value={{type:"child"}} onChange={handleChange}>Child Appointment</option>
+                <option id="type" value={type === "general"} onChange={handleChange}>General</option>
+                <option id="type" value={type ===" Dentist"} onChange={handleChange}>Dentist</option>
+                <option id="type" value={type === "Optometry"} onChange={handleChange}>Eye Appointment</option>
+                <option id="type" value={type === "child"} onChange={handleChange}>Child Appointment</option>
             
             </select>
             </div> 
@@ -71,13 +59,13 @@ const BookingForm = props => {
                 <select name="time" id="time" 
                  required style={{display:"inline"}}>
 
-                    <option value={{time:"08:00"}} onChange={handleChange}>8:30-9:30</option>
-                    <option value={{time:"9:30-10:30"}} onChange={handleChange}>9:30-10:30</option>
-                    <option value={{time:"10:30-11:30"}} onChange={handleChange}>10:30-11:30</option>
-                    <option value={{time:"12:30-13:30"}} onChange={handleChange}>12:30-13:30</option>
-                    <option value={{time:"13:30-14:30"}} onChange={handleChange}>13:30-14:30</option>
-                    <option value={{time:"14:30-15:30"}} onChange={handleChange}>14:30-15:30</option>
-                    <option value={{time:"15:30-16:30"}} onChange={handleChange}>15:30-16:30</option>
+                    <option value={time === "08:00"} onChange={handleChange}>8:30-9:30</option>
+                    <option value={time === "9:30-10:30"} onChange={handleChange}>9:30-10:30</option>
+                    <option value={time === "10:30-11:30"} onChange={handleChange}>10:30-11:30</option>
+                    <option value={time === "12:30-13:30"} onChange={handleChange}>12:30-13:30</option>
+                    <option value={time === "13:30-14:30"} onChange={handleChange}>13:30-14:30</option>
+                    <option value={time === "14:30-15:30"} onChange={handleChange}>14:30-15:30</option>
+                    <option value={time === "15:30-16:30"} onChange={handleChange}>15:30-16:30</option>
                 
                 </select>
             </div>

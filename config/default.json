@@ -1,4 +1,4 @@
 {
-    "mongoURI" : "mongodb+srv://ntombekazi123:ntombekazi123@clinic-bookings.61mdf.mongodb.net/project0?retryWrites=true&w=majority",
+    "mongoURI" : "mongodb+srv://ntombekazi123:ntombekazi123@contact-keeper.61mdf.mongodb.net/clinic-booker?retryWrites=true&w=majority",
     "jwtSecret":"secret"
 }

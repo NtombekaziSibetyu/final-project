@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import axios from 'axios';
+import setToken from '../../utils/setToken';
 import {
     REGISTER,
     REGISTER_ERROR,
@@ -22,19 +23,13 @@ const PatientState = props => {
         patient: null,
         error: null
     }
-    const SettingToken = token => {
-        if(token) {
-            axios.defaults.headers.common['x-auth-token'] = token;
-        } else {
-            delete axios.defaults.headers.common['x-auth-token'];
-        }
-    };
+    
     const [ state, dispatch] = useReducer( PatientReducer, initialState);
 
     //show the patients infos
     const showPatient = async () => {
         if(localStorage.token){
-            SettingToken(localStorage.token);  
+            setToken(localStorage.token);  
          }
         try {
             const res = await axios.get('/api/auth')
@@ -102,7 +97,7 @@ const PatientState = props => {
             authorised: state.authorised,
             patient: state.patient,
             error: state.error,
-            SettingToken,
+            setToken,
             register,
             showPatient,
             logIn,
