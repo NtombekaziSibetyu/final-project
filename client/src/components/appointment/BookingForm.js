@@ -49,10 +49,10 @@ const BookingForm = props => {
             onChange={(e) => setType(e.target.value)}
              required style={{display:"inline"}} >
 
-                <option id="type" value="general" >General</option>
+                <option id="type" value="General" >General</option>
                 <option id="type" value= " Dentist">Dentist</option>
                 <option id="type" value="Optometry">Eye Appointment</option>
-                <option id="type" value="child">Child Appointment</option>
+                <option id="type" value="Peadiatric">Child Appointment</option>
             
             </select>
             </div> 
