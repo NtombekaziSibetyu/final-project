@@ -11,9 +11,6 @@ const Bookings = ({ booking}) => {
         // eslint-disable-next-line
     }, []);
 
-    // const formatDate = (date) => {
-
-    // }
     const onClick = () => {
         cancelAppointments(_id);
     }

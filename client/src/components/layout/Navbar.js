@@ -14,12 +14,15 @@ const Navbar = () => {
     
     return (
       <div className="topnav" id="myTopnav" >
-        <Link to='/' >Home</Link>
-        <Link to='/about' >About</Link>
-        <Link to='/login'>Login</Link>
+        <a className="navbar-brand" href="#">
+          ClinicCare
+        </a>
+          <Link to='/' >Home</Link>
+          <Link to='/about' >About</Link>
+          <Link to='/login'>Login</Link>
         <a href="#" className="icon" >
-        <i className="fa fa-bars" onClick={navigator}></i>
-      </a>
+          <i className="fa fa-bars" onClick={navigator}></i>
+        </a>
       </div>
     
     )

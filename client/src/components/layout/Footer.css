@@ -1,0 +1,25 @@
+.fixed-bottom{
+    margin-bottom: 0;
+    padding: 10px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 200;
+}
+.fixed-bottom ul li{
+    list-style: none;
+    list-style-type: none;
+    display: inline;
+    align-content: space-between;
+  }
+  .fixed-bottom i{
+    float: left;
+    color: #FFFFFF;
+    padding: 10px;
+  }
+  .fixed-bottom .a {
+    color: #FFFFFF;
+    text-decoration: none!important;
+    text-decoration-line: none!important;
+  }

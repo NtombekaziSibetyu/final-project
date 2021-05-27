@@ -6,7 +6,13 @@ body {
 .topnav {
   overflow: hidden;
   background-color: #333;
+  margin: 0;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  font-weight: 400;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -16,18 +22,22 @@ body {
   text-decoration: none;
   font-size: 17px;
 }
+
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
 .topnav a.active {
-  background-color: #00acc1;
+  background-color: rgb(10, 189, 189);
   color: white;
 }
 
 .topnav .icon {
   display: none;
+}
+.navbar-brand{
+  color: rgb(10, 189, 189);
 }
 
 @media screen and (max-width: 600px) {

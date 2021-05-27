@@ -1,9 +1,9 @@
 import React from 'react'
-import '../../App.css'
+import './Footer.css'
 
 const Footer = () => {
     return (
-        <div className='footer fixed'>
+        <div className='fixed-bottom'>
             <p>Copyright@ clinic-booking</p> 
             <ul>
                 <li> <i className="fab fa-facebook"/> 

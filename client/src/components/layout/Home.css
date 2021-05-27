@@ -1,0 +1,20 @@
+.container {
+    margin: 0px auto;
+    background-color: transparent;
+    border:  #757575;
+    box-shadow: #424242;
+    padding: 30px;
+    align-content: center;
+  }
+
+.content {
+    margin: 0px auto;
+    padding: 20px;
+}
+.btn {
+    margin: 0px auto;
+    padding: 10px;
+    background-color: rgba(11, 168, 168, 0.808);
+    color: black;
+    border-radius: 5px;
+}

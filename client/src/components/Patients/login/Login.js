@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState} from 'react';
 import { useHistory } from "react-router-dom";
 import PatientContext from '../../../context/patient/PatientContext';
+import './Login.css'
 
 const Login = props => {
     const patientContext = useContext( PatientContext );
@@ -36,26 +37,23 @@ const Login = props => {
     //
     return (
         <div className='container center'>
-            <div>
+            <div className="text-center">
                 <h4>Not registered?</h4>
                 <a href="/register">Register here</a>
+                <h3>Login</h3>
             </div>
             <form onSubmit={loginPatient} className='form'>
-                <h3>Login</h3>
-                <div className='form-group'>
-                    <label htmlFor='email'>Email Adsress</label>
-                    <input type='email' name='email' value={email} 
-                    onChange={handleChange} placeholder='Registered Email Address' required/>
+                <div className="mb-3">
+                    <input type="text" className="form-control" id="formGroupExampleInput"
+                     value={email} 
+                     onChange={handleChange} placeholder='Registered Email Address' required/>
                 </div>
-                <div className='form-group'>
-                    <label htmlFor='password'>Password</label>
-                    <input type='password' name='password' 
+                <div className="mb-3">
+                    <input type="text" className="form-control" id="formGroupExampleInput2"
                     value={password} onChange={handleChange} 
-                     minLength='8' maxLength='13' placeholder='Enter password' required/>
+                    minLength='8' maxLength='13' placeholder='Enter password' required/>
                 </div>
-                <div className='form-group'>
-                    <button className='btn btn-block' type='submit'  >Login</button>
-                </div>
+                <button type='submit' className="btn btn-info btn-center">Login</button>
                 <span className='error'></span>
             </form>
         </div>

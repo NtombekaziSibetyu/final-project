@@ -1,4 +1,8 @@
-
+.app {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
 .container {
   background-color: transparent;
   border:  #757575;
@@ -54,10 +58,10 @@
   width: 100%;
 }
 
-.footer {
-  /* position: sticky; */
+/* .footer {
+  position: sticky;
   margin-bottom: 0;
-  /* margin-top: 20px; */
+  margin-top: 20px;
   padding: 2px;
   width: 100%;
   background-color:#263238;
@@ -74,4 +78,4 @@
 }
 .footer .a {
   color: #FFFFFF;
-}
+} */

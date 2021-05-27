@@ -1,29 +1,12 @@
 import React, { useContext, useEffect, useState} from 'react';
-import { useHistory } from "react-router-dom";
 import BookingContext from '../../context/booking/BookingContext';
 import './booking.css'
 
-const BookingForm = props => {
+const BookingForm = (props) => {
 
     const bookingContext = useContext(BookingContext);
 
     const { booked, makeAppointment } = bookingContext;
-
-    const history = useHistory();
-
-    // useEffect(() => {
-    //     if( booked ) {
-    //        const msg = document.getElementsByClassName('booked') ;
-    //        msg.innerHTML = 'The time and date you chose is booked'
-    //     //    props.history.push('/');
-    //     }
-    // }, [ booked, props.history])
-
-    // const [ booking, setBooking ] = useState({
-    //     type:'',
-    //     date:'',
-    //     time:''
-    // });
 
     const [type, setType] = useState('');
 
@@ -31,10 +14,6 @@ const BookingForm = props => {
 
     const [date, setDate] = useState('');
     
-    // const handleChange = e => setBooking(
-    //     {...booking, [e.target.name]: e.target.value}
-    //     );
-
     const addBooking = e => {
         e.preventDefault();
         const booking = {type, date, time}
