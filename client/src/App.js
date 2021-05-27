@@ -9,7 +9,6 @@ import Patient from './components/Patients/Patient';
 import BookingForm from './components/appointment/BookingForm';
 import PatientState from './context/patient/PatientState';
 import BookingState from './context/booking/BookingState';
-import './App.css';
 import Footer from './components/layout/Footer';
 
 

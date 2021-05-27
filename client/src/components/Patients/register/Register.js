@@ -20,11 +20,12 @@ const Register = props => {
         address: ''
     })
 
-    const { name, identityNo, email, password, phone, address} = patient;
-
-    const handleChange = e => setPatient(
-        {...patient, [e.target.name] : e.target.value}
-        );
+    const [name, setName, ] = useState('');
+         const [email, setEmail,] = useState('');
+         const [identityNo, setIdentityNo] = useState('');
+         const [phone, setPhone] = useState('');
+         const [password, setPassword] = useState('');
+         const [address, setAddress] = useState('');
 
     const registerPatient = e => {
         e.preventDefault();
@@ -33,6 +34,14 @@ const Register = props => {
             alert('User cannot be registered');
             removeErrors();
         }else {
+            setPatient({
+                name: name,
+                identityNo: identityNo,
+                email: email,
+                password: password,
+                phone: phone,
+                address: address
+            })
             register(patient);
             props.history.push('/patient')
             alert('Registered, login to make appointments');
@@ -49,7 +58,7 @@ const Register = props => {
                         <input type="text" className="form-control"
                         required
                         value={name} 
-                        onChange={handleChange} 
+                        onChange={(e) => setName(e.target.value)} 
                         placeholder="Full name" aria-label="Full name"/>
                     </div>
                     <div className="col">
@@ -57,7 +66,7 @@ const Register = props => {
                         required 
                         minLength='13'
                         maxLength='13'
-                        value={identityNo} onChange={handleChange} 
+                        value={identityNo} onChange={(e) => setIdentityNo(e.target.value)} 
                         placeholder="ID Number" aria-label="ID Number"/>
                     </div>
                 </div>
@@ -66,11 +75,11 @@ const Register = props => {
                     <div className="col">
                         <input type="text" className="form-control" 
                         value={phone} minLength='10'
-                        onChange={handleChange} required placeholder="Phone"/>
+                        onChange={(e) => setPhone(e.target.value)} required placeholder="Phone"/>
                     </div>
                     <div className="col">
                         <input type="text" className="form-control" 
-                        value={address} onChange={handleChange} required
+                        value={address} onChange={(e) => setAddress(e.target.value)} required
                         placeholder="Address" aria-label="Address"/>
                     </div>
                 </div>
@@ -79,17 +88,18 @@ const Register = props => {
                     <div className="col">
                         <input type="text" className="form-control" 
                         value={email} 
-                        onChange={handleChange}
+                        onChange={(e) => setEmail(e.target.value) }
                         placeholder="Email" aria-label="Email" required/>
                     </div>
                     <div className="col">
                         <input type="text" className="form-control" 
                         value={password}
                         minLength='8' maxLength='13'
-                        onChange={handleChange}  placeholder='Password' required/>
+                        onChange={(e) => setPassword(e.target.value)}  placeholder='Password' required/>
                     </div>
                 </div>
-                <button type='submit' className="btn btn-info btn-center">Register</button>
+
+                <button type='submit' onClick={registerPatient} className="btn btn-info btn-center">Register</button>
             </form>
         </div>
     )

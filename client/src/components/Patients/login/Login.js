@@ -21,17 +21,19 @@ const Login = props => {
         // eslint-disable-next-line
     }, [ authorised, error, props.history])
 
+    const [email, setEmail] = useState('')
+
+    const [password, setPassword] = useState('');
+
     const [patient, setPatient] = useState({
         email: '',
         password: ''  
     })
 
-    const { email, password } = patient;
-    const handleChange = e => setPatient({...patient, [e.target.name] : e.target.value});
 
     const loginPatient = e => {
         e.preventDefault(); 
-           
+        setPatient({email: email,password:password})
         logIn(patient); 
         }
     //
@@ -46,14 +48,14 @@ const Login = props => {
                 <div className="mb-3">
                     <input type="text" className="form-control" id="formGroupExampleInput"
                      value={email} 
-                     onChange={handleChange} placeholder='Registered Email Address' required/>
+                     onChange={(e)=> setEmail(e.target.value)} placeholder='Registered Email Address' required/>
                 </div>
                 <div className="mb-3">
                     <input type="text" className="form-control" id="formGroupExampleInput2"
-                    value={password} onChange={handleChange} 
+                    value={password} onChange={(e) => setPassword(e.target.value)} 
                     minLength='8' maxLength='13' placeholder='Enter password' required/>
                 </div>
-                <button type='submit' className="btn btn-info btn-center">Login</button>
+                <button type='submit' className="btn btn-info btn-center" onClick={loginPatient}>Login</button>
                 <span className='error'></span>
             </form>
         </div>
